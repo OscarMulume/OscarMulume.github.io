@@ -1,0 +1,43 @@
+{
+  "name": "@msec/security",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Sessions signées (HMAC) et stockage sécurisé (httpOnly cookie / Keychain-Keystore).",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./mobile": {
+      "types": "./dist/mobile.d.ts",
+      "import": "./dist/mobile.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@msec/core": "0.1.0"
+  },
+  "peerDependencies": {
+    "expo-secure-store": "~15.0.7"
+  },
+  "peerDependenciesMeta": {
+    "expo-secure-store": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "expo-secure-store": "~15.0.7",
+    "typescript": "~5.9.2"
+  }
+}

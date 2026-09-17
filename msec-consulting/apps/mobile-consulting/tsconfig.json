@@ -1,0 +1,34 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "verbatimModuleSyntax": true,
+    "noFallthroughCasesInSwitch": true,
+    "noEmit": true,
+    "paths": {
+      "@msec/core": [
+        "../../packages/core/src/index.ts"
+      ],
+      "@msec/api": [
+        "../../packages/api/src/index.ts"
+      ],
+      "@msec/security": [
+        "../../packages/security/src/index.ts"
+      ],
+      "@msec/security/mobile": [
+        "../../packages/security/src/mobile.ts"
+      ],
+      "@msec/ui": [
+        "../../packages/ui/src/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

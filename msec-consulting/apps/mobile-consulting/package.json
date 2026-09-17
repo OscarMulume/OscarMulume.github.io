@@ -1,0 +1,30 @@
+{
+  "name": "@msec/mobile-consulting",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.js",
+  "description": "Portail client mobile MSEC CONSULTING — Expo + tRPC + FlashList.",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@msec/api": "0.1.0",
+    "@msec/core": "0.1.0",
+    "@msec/security": "0.1.0",
+    "@msec/ui": "0.1.0",
+    "@shopify/flash-list": "^2.0.0",
+    "@tanstack/react-query": "^5.62.11",
+    "expo": "~54.0.0",
+    "expo-secure-store": "~15.0.7",
+    "expo-status-bar": "~3.0.9",
+    "react": "19.1.0",
+    "react-native": "0.81.5"
+  },
+  "devDependencies": {
+    "@types/react": "~19.1.10",
+    "typescript": "~5.9.2"
+  }
+}
