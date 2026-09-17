@@ -1,0 +1,44 @@
+{
+  "name": "@pos/mobile",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "typecheck": "tsc --noEmit",
+    "build:android": "expo export --platform android",
+    "build:ios": "expo export --platform ios",
+    "eas:preview": "eas build --profile preview",
+    "eas:prod": "eas build --profile production"
+  },
+  "dependencies": {
+    "@pos/api": "0.1.0",
+    "@pos/core": "0.1.0",
+    "@pos/security": "0.1.0",
+    "@pos/ui": "0.1.0",
+    "@op-engineering/op-sqlite": "^18.2.3",
+    "@powersync/common": "^2.2.1",
+    "@powersync/react-native": "^2.2.1",
+    "@shopify/flash-list": "^2.0.0",
+    "@tanstack/react-query": "^5.62.11",
+    "expo": "~54.0.20",
+    "expo-constants": "~18.0.11",
+    "expo-secure-store": "~15.0.7",
+    "expo-splash-screen": "~31.0.13",
+    "expo-status-bar": "~3.0.8",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-web": "~0.21.0",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/react": "~19.1.10",
+    "babel-preset-expo": "~54.0.12",
+    "typescript": "~5.9.2"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": [
+      "ES2023",
+      "DOM"
+    ],
+    "types": [
+      "react",
+      "expo"
+    ],
+    "paths": {
+      "@pos/core": [
+        "../../packages/core/src/index.ts"
+      ],
+      "@pos/api": [
+        "../../packages/api/src/index.ts"
+      ],
+      "@pos/security": [
+        "../../packages/security/src/index.ts"
+      ],
+      "@pos/security/mobile": [
+        "../../packages/security/src/storage/keychain.mobile.ts"
+      ],
+      "@pos/ui": [
+        "../../packages/ui/src/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "App.tsx",
+    "src",
+    "app"
+  ]
+}

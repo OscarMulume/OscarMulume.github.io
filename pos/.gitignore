@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Builds
+dist/
+build/
+.next/
+
+# Turbo cache
+.turbo/
+
+# Expo
+apps/mobile-pos/.expo/
+apps/mobile-pos/android/
+apps/mobile-pos/ios/
+
+# Rust / Tauri
+apps/desktop/src-tauri/target/
+
+# Logs
+*.log
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
