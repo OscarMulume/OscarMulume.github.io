@@ -1,0 +1,75 @@
+{
+  "expo": {
+    "name": "M-Sec POS",
+    "slug": "msec-pos",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "scheme": "msecpos",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "backgroundColor": "#0B1220",
+      "resizeMode": "contain"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.msec.pos",
+      "buildNumber": "1",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Nécessaire pour associer chaque encaissement à la caisse physique."
+      }
+    },
+    "android": {
+      "package": "com.msec.pos",
+      "versionCode": 1,
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "android.permission.BLUETOOTH_CONNECT",
+        "android.permission.BLUETOOTH_SCAN",
+        "android.permission.NFC"
+      ],
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
+    },
+    "runtimeVersion": {
+      "policy": "fingerprint"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/<PROJECT_ID>",
+      "enabled": true,
+      "fallbackToCacheTimeout": 0
+    },
+    "extra": {
+      "eas": {
+        "projectId": "<PROJECT_ID>"
+      },
+      "pos": {
+        "apiUrl": "https://api.pos.msec.app/api/trpc",
+        "syncEndpoint": "https://api.pos.msec.app/api/sync",
+        "pinningEnabled": true
+      }
+    },
+    "plugins": [
+      "expo-secure-store",
+      "expo-splash-screen",
+      [
+        "./plugins/with-ssl-pinning",
+        {
+          "enabled": true,
+          "hosts": [
+            {
+              "host": "api.pos.msec.app",
+              "sha256Fingerprints": [
+                "0000000000000000000000000000000000000000000000000000000000000000"
+              ],
+              "includeSubdomains": false
+            }
+          ]
+        }
+      ]
+    ]
+  }
+}

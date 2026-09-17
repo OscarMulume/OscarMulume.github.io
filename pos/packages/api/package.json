@@ -1,0 +1,33 @@
+{
+  "name": "@pos/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Client d'API tRPC typé — idempotence et retry avec backoff exponentiel",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@pos/core": "0.1.0",
+    "@trpc/client": "^11.0.0",
+    "@trpc/server": "^11.0.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.2"
+  }
+}
