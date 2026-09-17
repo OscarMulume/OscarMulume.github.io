@@ -1,0 +1,239 @@
+/* ═══════════════════════════════════════════════════════════
+   M-Sec Design System — Tri-Theme Variables
+   Modes: Light (default), Dark (Lumière Basse), High Contrast
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Light Theme (Default) ─── */
+:root {
+  /* Surfaces */
+  --bg: #f8f9fc;
+  --bg2: #f0f1f5;
+  --bg3: #e6e8ee;
+  --surface: rgba(0, 0, 0, 0.025);
+  --surface-h: rgba(0, 0, 0, 0.05);
+  --glass: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-border-h: rgba(0, 0, 0, 0.16);
+
+  /* Texte */
+  --text: #0f1729;
+  --text2: #4a5068;
+  --text3: #7c8198;
+
+  /* Couleurs d'accent */
+  --blue: #2563eb;
+  --blue-g: rgba(37, 99, 235, 0.08);
+  --blue-br: #3b82f6;
+  --blue-border: rgba(37, 99, 235, 0.16);
+  --indigo: #4f46e5;
+  --indigo-g: rgba(79, 70, 229, 0.07);
+  --cyan: #0891b2;
+  --green: #16a34a;
+  --green-glow: rgba(22, 163, 74, 0.4);
+  --orange: #ea580c;
+  --red: #dc2626;
+
+  /* Composants */
+  --nav-bg: rgba(255, 255, 255, 0.72);
+  --nav-bg-solid: rgba(255, 255, 255, 0.9);
+  --mob-menu-bg: rgba(255, 255, 255, 0.96);
+  --hover-bg: rgba(0, 0, 0, 0.045);
+  --chip-bg: rgba(0, 0, 0, 0.03);
+  --input-bg: rgba(0, 0, 0, 0.02);
+  --input-bg-focus: rgba(255, 255, 255, 0.98);
+  --btn-s-bg: rgba(0, 0, 0, 0.02);
+  --card-shine: rgba(255, 255, 255, 0.8);
+  --card-shine-2: rgba(255, 255, 255, 0.6);
+
+  /* Ombres & effets */
+  --btn-shadow: rgba(37, 99, 235, 0.22);
+  --btn-shadow-hover: rgba(37, 99, 235, 0.32);
+  --btn-inset: rgba(255, 255, 255, 0.6);
+  --btn-shine: rgba(255, 255, 255, 0.5);
+  --focus-ring: rgba(37, 99, 235, 0.14);
+  --shadow-inset: rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 12px 32px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+  --shadow-nav: 0 1px 3px rgba(0, 0, 0, 0.06);
+
+  /* Orbes & particules */
+  --orb-1: rgba(37, 99, 235, 0.1);
+  --orb-2: rgba(79, 70, 229, 0.08);
+  --orb-3: rgba(8, 145, 178, 0.06);
+  --particle-blue: 37, 99, 235;
+  --particle-indigo: 79, 70, 229;
+  --particle-cyan: 8, 145, 178;
+  --grid-dot: 15, 23, 41;
+
+  --select-arrow: url("data:image/svg+xml,%3Csvg width='12' height='12' fill='none' stroke='%233b82f6' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  --grain-opacity: 0.01;
+
+  /* Motion & radius */
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --spring-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+}
+
+/* ─── Dark Theme (Lumière Basse) ─── */
+[data-theme="dark"] {
+  --bg: #0c0d14;
+  --bg2: #12131e;
+  --bg3: #1a1b2e;
+  --surface: rgba(255, 255, 255, 0.03);
+  --surface-h: rgba(255, 255, 255, 0.06);
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.07);
+  --glass-border-h: rgba(255, 255, 255, 0.13);
+
+  --text: #e8e9f0;
+  --text2: #8a8da8;
+  --text3: #52567a;
+
+  --blue: #3b82f6;
+  --blue-g: rgba(59, 130, 246, 0.1);
+  --blue-br: #60a5fa;
+  --blue-border: rgba(59, 130, 246, 0.2);
+  --indigo: #6366f1;
+  --indigo-g: rgba(99, 102, 241, 0.08);
+  --cyan: #22d3ee;
+  --green: #22c55e;
+  --green-glow: rgba(34, 197, 94, 0.5);
+  --orange: #f97316;
+  --red: #ef4444;
+
+  --nav-bg: rgba(14, 15, 22, 0.6);
+  --nav-bg-solid: rgba(14, 15, 22, 0.88);
+  --mob-menu-bg: rgba(14, 15, 22, 0.94);
+  --hover-bg: rgba(255, 255, 255, 0.05);
+  --chip-bg: rgba(255, 255, 255, 0.03);
+  --input-bg: rgba(255, 255, 255, 0.03);
+  --input-bg-focus: rgba(59, 130, 246, 0.05);
+  --btn-s-bg: rgba(255, 255, 255, 0.04);
+  --card-shine: rgba(255, 255, 255, 0.04);
+  --card-shine-2: rgba(255, 255, 255, 0.03);
+
+  --btn-shadow: rgba(59, 130, 246, 0.3);
+  --btn-shadow-hover: rgba(59, 130, 246, 0.45);
+  --btn-inset: rgba(255, 255, 255, 0.12);
+  --btn-shine: rgba(255, 255, 255, 0.1);
+  --focus-ring: rgba(59, 130, 246, 0.14);
+  --shadow-inset: rgba(255, 255, 255, 0.05);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.35);
+  --shadow-nav: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+  --orb-1: rgba(59, 130, 246, 0.07);
+  --orb-2: rgba(99, 102, 241, 0.05);
+  --orb-3: rgba(34, 211, 238, 0.04);
+  --particle-blue: 59, 130, 246;
+  --particle-indigo: 99, 102, 241;
+  --particle-cyan: 34, 211, 238;
+  --grid-dot: 160, 165, 205;
+
+  --select-arrow: url("data:image/svg+xml,%3Csvg width='12' height='12' fill='none' stroke='%237a7a95' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  --grain-opacity: 0.015;
+}
+
+/* ─── High Contrast Theme ─── */
+[data-theme="high-contrast"] {
+  --bg: #000000;
+  --bg2: #0a0a0a;
+  --bg3: #141414;
+  --surface: rgba(255, 255, 255, 0.06);
+  --surface-h: rgba(255, 255, 255, 0.12);
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.25);
+  --glass-border-h: rgba(255, 255, 255, 0.4);
+
+  --text: #ffffff;
+  --text2: #d0d0d0;
+  --text3: #b0b0b0;
+
+  --blue: #55aaff;
+  --blue-g: rgba(85, 170, 255, 0.14);
+  --blue-br: #88ccff;
+  --blue-border: rgba(85, 170, 255, 0.3);
+  --indigo: #9999ff;
+  --indigo-g: rgba(153, 153, 255, 0.12);
+  --cyan: #55eeff;
+  --green: #55ee77;
+  --green-glow: rgba(85, 238, 119, 0.6);
+  --orange: #ffaa44;
+  --red: #ff5555;
+
+  --nav-bg: rgba(0, 0, 0, 0.85);
+  --nav-bg-solid: #000000;
+  --mob-menu-bg: #000000;
+  --hover-bg: rgba(255, 255, 255, 0.14);
+  --chip-bg: rgba(255, 255, 255, 0.08);
+  --input-bg: #000000;
+  --input-bg-focus: #111111;
+  --btn-s-bg: rgba(255, 255, 255, 0.08);
+  --card-shine: rgba(255, 255, 255, 0.06);
+  --card-shine-2: rgba(255, 255, 255, 0.04);
+
+  --btn-shadow: rgba(85, 170, 255, 0.4);
+  --btn-shadow-hover: rgba(85, 170, 255, 0.6);
+  --btn-inset: rgba(255, 255, 255, 0.3);
+  --btn-shine: rgba(255, 255, 255, 0.2);
+  --focus-ring: rgba(85, 170, 255, 0.3);
+  --shadow-inset: rgba(255, 255, 255, 0.1);
+  --shadow-card: 0 0 0 1px rgba(255, 255, 255, 0.15);
+  --shadow-card-hover: 0 0 0 1px rgba(255, 255, 255, 0.35), 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-nav: 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+  --orb-1: rgba(85, 170, 255, 0.05);
+  --orb-2: rgba(153, 153, 255, 0.04);
+  --orb-3: rgba(85, 238, 255, 0.03);
+  --particle-blue: 85, 170, 255;
+  --particle-indigo: 153, 153, 255;
+  --particle-cyan: 85, 238, 255;
+  --grid-dot: 255, 255, 255;
+
+  --select-arrow: url("data:image/svg+xml,%3Csvg width='12' height='12' fill='none' stroke='%23d0d0d0' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  --grain-opacity: 0;
+}
+
+/* ─── Theme Transition ─── */
+html[data-theme] *,
+html[data-theme] *::before,
+html[data-theme] *::after {
+  transition: background-color 0.35s ease, background 0.35s ease, color 0.25s ease, border-color 0.35s ease, box-shadow 0.35s ease, opacity 0.3s ease;
+}
+
+html[data-theme] .no-theme-transition,
+html[data-theme] .no-theme-transition * {
+  transition: none !important;
+}
+
+/* ─── Accessibilité : focus visible global ─── */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* ─── Skip link (accessibilité) ─── */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 16px;
+  z-index: 2000;
+  padding: 10px 18px;
+  border-radius: 0 0 12px 12px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: top 0.3s var(--spring);
+}
+
+.skip-link:focus {
+  top: 0;
+}

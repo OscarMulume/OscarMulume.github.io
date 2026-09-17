@@ -1,0 +1,177 @@
+---
+// ─── ThemeToggle.astro ───
+// Navigue entre 3 modes : light, dark (Lumière Basse), high-contrast
+// Persistance : localStorage + détection prefers-color-scheme
+// Le script inline s'exécute avant le paint (FOUC prevention)
+---
+<script>
+  const ThemeToggle = (() => {
+    const STORAGE_KEY = 'msec-theme';
+    const THEMES = ['light', 'dark', 'high-contrast'] as const;
+    type Theme = (typeof THEMES)[number];
+
+    function systemTheme(): Theme {
+      if (typeof window === 'undefined') return 'light';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function getTheme(): Theme {
+      try {
+        const saved = window.localStorage.getItem(STORAGE_KEY);
+        if (saved && (THEMES as readonly string[]).includes(saved)) return saved as Theme;
+      } catch { /* localStorage indisponible */ }
+      return systemTheme();
+    }
+
+    function applyTheme(theme: Theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.style.colorScheme = theme === 'high-contrast' ? 'dark' : theme;
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) {
+        const colors: Record<Theme, string> = {
+          light: '#f8f9fc',
+          dark: '#0c0d14',
+          'high-contrast': '#000000',
+        };
+        meta.setAttribute('content', colors[theme]);
+      }
+    }
+
+    function persistTheme(theme: Theme) {
+      if (theme === systemTheme()) {
+        window.localStorage.removeItem(STORAGE_KEY);
+      } else {
+        window.localStorage.setItem(STORAGE_KEY, theme);
+      }
+    }
+
+    function init() {
+      applyTheme(getTheme());
+
+      document.querySelectorAll<HTMLElement>('[data-theme-toggle]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const current = getTheme();
+          const next = THEMES[(THEMES.indexOf(current) + 1) % THEMES.length];
+          applyTheme(next);
+          persistTheme(next);
+          updateButtonLabels(next);
+        });
+      });
+
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      const onSystemChange = () => {
+        if (window.localStorage.getItem(STORAGE_KEY) === null) {
+          applyTheme(getTheme());
+        }
+      };
+      mq.addEventListener('change', onSystemChange);
+    }
+
+    function updateButtonLabels(theme: Theme) {
+      const labels: Record<Theme, string> = {
+        light: 'Activer le mode clair',
+        dark: 'Activer le mode sombre (Lumière Basse)',
+        'high-contrast': 'Activer le mode contraste élevé',
+      };
+      document.querySelectorAll<HTMLElement>('[data-theme-toggle]').forEach((btn) => {
+        btn.setAttribute('aria-label', labels[theme]);
+      });
+      document.body.setAttribute('data-current-theme', theme);
+    }
+
+    init();
+  })();
+</script>
+
+<!-- Bouton cyclique : light → dark → high-contrast → light -->
+<button
+  type="button"
+  class="theme-toggle"
+  data-theme-toggle
+  aria-label="Activer le mode sombre (Lumière Basse)"
+  title="Changer de thème (Clair / Sombre doux / Contraste élevé)"
+>
+  <!-- Sun (light) -->
+  <svg class="ico-ico ico-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+  </svg>
+  <!-- Moon (dark / lumière basse) -->
+  <svg class="ico-ico ico-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+  <!-- Contrast (high-contrast) -->
+  <svg class="ico-ico ico-contrast" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <circle cx="12" cy="12" r="9"/>
+    <path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor" stroke="none"/>
+  </svg>
+</button>
+
+<style>
+  .theme-toggle {
+    --tt-size: 40px;
+    position: relative;
+    width: var(--tt-size);
+    height: var(--tt-size);
+    border-radius: 14px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass);
+    color: var(--text2);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease, transform 0.3s var(--spring);
+    flex-shrink: 0;
+  }
+
+  .theme-toggle:hover {
+    color: var(--text);
+    border-color: var(--glass-border-h);
+    transform: translateY(-1px) scale(1.03);
+  }
+
+  .theme-toggle:active {
+    transform: scale(0.94);
+  }
+
+  .theme-toggle:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+  }
+
+  /* ─── Icônes superposées, rotation animée ─── */
+  .theme-toggle .ico-ico {
+    position: absolute;
+    transition: opacity 0.35s ease, transform 0.5s var(--spring);
+  }
+
+  .theme-toggle .ico-sun {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+  }
+  .theme-toggle .ico-moon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+  }
+  .theme-toggle .ico-contrast {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+  }
+
+  html[data-theme="light"] .theme-toggle .ico-sun {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+  html[data-theme="dark"] .theme-toggle .ico-moon {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+  html[data-theme="high-contrast"] .theme-toggle .ico-contrast {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+</style>

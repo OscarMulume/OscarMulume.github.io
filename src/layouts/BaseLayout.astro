@@ -1,0 +1,70 @@
+---
+import '../styles/global.css';
+import '../styles/themes.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const DEFAULT_TITLE = 'Oscar Mulume | IT/Network Architect · Cybersecurity Analyst · Full-Stack';
+const DEFAULT_DESCRIPTION =
+  'IT Consultant, Network Architect et Cybersecurity Analyst basé à Kinshasa, RDC. Architecture réseau, cybersécurité offensive, développement IA. SLA 99.9%, réponse incidents en 2h.';
+
+const {
+  title = DEFAULT_TITLE,
+  description = DEFAULT_DESCRIPTION,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f8f9fc" />
+    <meta property="og:title" content="Oscar Mulume — IT/Network Architect & Cybersecurity Analyst" />
+    <meta property="og:description" content="Architecture réseau, cybersécurité offensive, développement IA. SLA 99.9%, réponse incidents en 2h. Kinshasa, RDC — Afrique Centrale." />
+    <meta property="og:type" content="website" />
+    <meta name="color-scheme" content="light dark" />
+
+    <!-- ═══ Anti-FOUC : applique le thème avant le premier paint ═══ -->
+    <script is:inline>
+      (function () {
+        const STORAGE_KEY = 'msec-theme';
+        const THEMES = ['light', 'dark', 'high-contrast'];
+
+        function systemTheme() {
+          if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+          }
+          return 'light';
+        }
+
+        function getTheme() {
+          try {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved && THEMES.indexOf(saved) !== -1) return saved;
+          } catch (e) { /* storage indisponible */ }
+          return systemTheme();
+        }
+
+        var t = getTheme();
+        document.documentElement.setAttribute('data-theme', t);
+        document.documentElement.style.colorScheme = t === 'high-contrast' ? 'dark' : t;
+      })();
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  </head>
+  <body data-current-theme="light">
+    <a class="skip-link" href="#main">Aller au contenu</a>
+    <slot />
+  </body>
+</html>
