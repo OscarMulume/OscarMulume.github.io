@@ -64,9 +64,13 @@
     display: block;
     object-fit: cover;
   }
-  .pfx-canvas { opacity: 0; transition: opacity 0.4s ease; }
+  .pfx-img { transition: opacity 0.35s ease; }
+  .pfx-canvas { opacity: 0; transition: opacity 0.35s ease; }
   .pfx.fx-on .pfx-canvas { opacity: 1; }
   .pfx.fx-on .pfx-img { opacity: 0; }
+  /* Au repos : la vraie photo, nette ; les particules reprennent au survol. */
+  .pfx.fx-on.settled .pfx-canvas { opacity: 0; }
+  .pfx.fx-on.settled .pfx-img { opacity: 1; }
   .pfx-glow {
     position: absolute;
     inset: 4%;
@@ -199,14 +203,15 @@
       }
     }
 
-    const R = 70;           // rayon d'influence de la souris (px)
+    const R = 60;           // rayon d'influence de la souris (px)
     const FORCE = 2.4;      // puissance de dispersion
     const SPRING = 0.06;    // retour vers la position d'origine
     const FRICTION = 0.82;
 
     function frame() {
       if (!running) return;
-      ctx!.clearRect(0, 0, W, H);
+      ctx!.fillStyle = '#0b1020';
+      ctx!.fillRect(0, 0, W, H);
       let moving = false;
       for (const p of pts) {
         const dx = p.x - mx, dy = p.y - my;
@@ -222,16 +227,22 @@
         p.x += p.vx; p.y += p.vy;
         if (!moving && (Math.abs(p.vx) > 0.05 || Math.abs(p.vy) > 0.05)) moving = true;
         ctx!.fillStyle = p.c;
-        ctx!.fillRect(p.x, p.y, cell, cell);
+        ctx!.fillRect(Math.round(p.x), Math.round(p.y), cell + 1, cell + 1);
       }
       // Économie : on s'arrête quand tout est au repos et la souris absente.
-      if (!moving && mx < -1000) { running = false; return; }
+      if (!moving && mx < -1000) {
+        for (const p of pts) { p.x = p.hx; p.y = p.hy; p.vx = 0; p.vy = 0; }
+        running = false;
+        root!.classList.add('settled');
+        return;
+      }
       rafId = requestAnimationFrame(frame);
     }
 
     function wake() {
       if (running || !visible) return;
       running = true;
+      root!.classList.remove('settled');
       rafId = requestAnimationFrame(frame);
     }
 

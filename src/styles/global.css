@@ -1341,7 +1341,9 @@ body::after {
   .hero h1 { font-size: 2.25rem; }
 }
 /* ─── Hero stats (sous le hero) ─── */
+.hero { flex-direction: column; justify-content: center; }
 .hero-stats {
+  width: 100%;
   max-width: 1200px;
   margin: 40px auto 0;
   display: grid;
