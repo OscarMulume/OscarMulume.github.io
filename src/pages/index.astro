@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import PortraitFX from '../components/PortraitFX.astro';
 ---
 
 <BaseLayout>
@@ -18,6 +19,7 @@ import ThemeToggle from '../components/ThemeToggle.astro';
         <a href="#apropos">À propos</a>
         <a href="#services">Services</a>
         <a href="#experiences">Expériences</a>
+        <a href="#projets">Projets</a>
         <a href="#competences">Compétences</a>
         <a href="#contact">Contact</a>
       </div>
@@ -33,6 +35,7 @@ import ThemeToggle from '../components/ThemeToggle.astro';
       <a href="#apropos">À propos</a>
       <a href="#services">Services</a>
       <a href="#experiences">Expériences</a>
+      <a href="#projets">Projets</a>
       <a href="#competences">Compétences</a>
       <a href="#contact">Contact</a>
     </div>
@@ -47,8 +50,8 @@ import ThemeToggle from '../components/ThemeToggle.astro';
           Disponible — Afrique Centrale
         </div>
         <h1>Oscar <span class="accent">Mulume</span></h1>
-        <div class="role">IT/Network Architect · Cybersecurity Analyst · Full-Stack Developer</div>
-        <p class="desc">J'architecte, déploie et sécurise les infrastructures critiques d'entreprises en Afrique Centrale. De la fibre optique à la cybersécurité offensive, en passant par l'intégration d'IA — je conçois des systèmes qui ne tombent jamais en panne.</p>
+        <div class="role">Infrastructure IT · Réseaux · Cybersécurité · Développement</div>
+        <p class="desc">J'architecte, déploie et sécurise les infrastructures critiques d'entreprises en Afrique Centrale. De la fibre optique à la cybersécurité offensive, en passant par l'intégration d'IA — je conçois des systèmes pensés pour rester disponibles.</p>
         <div class="btns">
           <a href="#services" class="btn-p">
             Découvrir mes services
@@ -59,25 +62,14 @@ import ThemeToggle from '../components/ThemeToggle.astro';
         <div class="loc-tag">📍 Kinshasa, RDC — Interventions en Afrique Centrale &amp; Remote</div>
       </div>
       <div class="hero-visual">
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-n">5+</div>
-            <div class="stat-l">Années d'expérience</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-n">4</div>
-            <div class="stat-l">Entreprises servies</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-n">15+</div>
-            <div class="stat-l">Certifications tech</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-n">99.9%</div>
-            <div class="stat-l">SLA maintenu</div>
-          </div>
-        </div>
+        <PortraitFX />
       </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card"><div class="stat-n">2021</div><div class="stat-l">En IT depuis</div></div>
+      <div class="stat-card"><div class="stat-n">5</div><div class="stat-l">Entités sécurisées chez Malaïka</div></div>
+      <div class="stat-card"><div class="stat-n">10+</div><div class="stat-l">Certifications vérifiables</div></div>
+      <div class="stat-card"><div class="stat-n">99,9 %</div><div class="stat-l">SLA maintenu</div></div>
     </div>
   </section>
 
@@ -89,11 +81,11 @@ import ThemeToggle from '../components/ThemeToggle.astro';
       <div class="section-header reveal">
         <div class="section-label">Profil</div>
         <h2 class="section-title">L'ingénieur que les entreprises appellent quand tout doit fonctionner</h2>
-        <p class="section-desc">Un profil hybride rare : Ingénierie réseau, Cybersécurité, Développement Full-Stack et IA.</p>
+        <p class="section-desc">Un profil hybride : ingénierie réseau, Cybersécurité, Développement Full-Stack et IA.</p>
       </div>
       <div class="about-grid reveal">
         <div class="about-copy">
-          <p>Je suis Oscar Mulume — un profil hybride rare qui combine <strong>architecture réseau d'entreprise</strong>, <strong>cybersécurité offensive</strong> et <strong>développement full-stack assisté par IA</strong>. Depuis Goma jusqu'à Kinshasa, j'ai construit ma réputation sur un principe simple : <em>zéro tolérance pour l'indisponibilité</em>.</p>
+          <p>Je suis Oscar Mulume — un profil hybride qui combine <strong>architecture réseau d'entreprise</strong>, <strong>cybersécurité offensive</strong> et <strong>développement full-stack assisté par IA</strong>. Depuis Goma jusqu'à Kinshasa, j'ai construit ma réputation sur un principe simple : <em>zéro tolérance pour l'indisponibilité</em>.</p>
           <p>Chez Malaïka Group, j'ai sécurisé 5+ sites web après une cyberattaque, maintenu un uptime Internet de 99% et garanti un SLA de 99.9% pour les services Wi-Fi et PMS. Ma méthode : auditer sans relâche, durcir sans compromis, monitorer sans interruption.</p>
           <p>Mon double profil — <strong>infrastructure terrain</strong> (fibre FTTH, Cisco, CCTV) et <strong>développement logiciel</strong> (Flutter, Python, AWS Bedrock) — me permet de comprendre une stack technique de bout en bout, du câble physique jusqu'au modèle d'IA en production.</p>
         </div>
@@ -108,7 +100,7 @@ import ThemeToggle from '../components/ThemeToggle.astro';
     <div class="section-inner">
       <div class="section-header reveal">
         <div class="section-label">Solutions IT</div>
-        <h2 class="section-title">Nos Services</h2>
+        <h2 class="section-title">Services</h2>
         <p class="section-desc">Des solutions complètes pour connecter, sécuriser, développer et maintenir vos infrastructures critiques.</p>
       </div>
       <div class="bento-grid">
@@ -205,57 +197,132 @@ import ThemeToggle from '../components/ThemeToggle.astro';
         <div class="tl-item reveal">
           <div class="tl-dot"></div>
           <div class="tl-header">
-            <span class="tl-title">Consultant IT · Head of Engineering &amp; Technology</span>
-            <span class="tl-badge now">● Mars 2026 – Présent</span>
+            <span class="tl-title">Responsable IT, Ingénierie &amp; Technologies (Consultant IT)</span>
+            <span class="tl-badge now">● Févr. 2026 – Présent</span>
           </div>
           <div class="tl-company">Malaïka Group — Kinshasa, RDC</div>
           <ul class="tl-desc">
-            <li>Sécurisation web de 5+ sites après une cyberattaque majeure : durcissement, pare-feu, monitoring temps réel</li>
-            <li>Disponibilité Internet maintenue à 99%, CCTV à 95%, services clients à 99.9%</li>
-            <li>SLA Wi-Fi/PMS à 99.9%, POS à 99.5% — incidents haute priorité traités en moins de 2h</li>
-            <li>Mise en place d'un plan de reprise d'activité (DRP/BCP) opérationnel</li>
-            <li>Audits de vulnérabilité réguliers, rapports mensuels de sécurité, gestion antivirus/EDR</li>
-            <li>Infrastructure couvrant le Ranch, Travels, Le Gabriel et les entités du groupe</li>
+            <li>Pilotage de l'IT, de la cybersécurité et de l'ingénierie de 5 entités (Malaïka Group, Ranch, Travels, Le Gabriel, Chez Malaïka)</li>
+            <li>Entré comme technicien réseau pour un audit d'urgence : pannes critiques rétablies, contrat groupe obtenu en un mois</li>
+            <li>Durcissement des plateformes web après une cyberattaque majeure : scans de vulnérabilités, correctifs, pare-feu, antivirus</li>
+            <li>Disponibilité de 99,9 % (Wi-Fi, PMS, contrôle d'accès), 99,5 % (POS), 99 % (Internet) ; incidents critiques traités en moins de 2 h</li>
+            <li>Plan de reprise après sinistre (DRP) et sauvegardes testés ; rapports mensuels à la direction</li>
+          </ul>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-header">
+            <span class="tl-title">Fondateur &amp; Consultant principal</span>
+            <span class="tl-badge now">● Mai 2026 – Présent</span>
+          </div>
+          <div class="tl-company">M-Sec Technology Consulting — Kinshasa, RDC</div>
+          <ul class="tl-desc">
+            <li>Évaluations de vulnérabilités, durcissement de systèmes et conseil en sécurité</li>
+            <li>Applications web et mobiles sur mesure (Flutter/Dart, Supabase) avec paiement mobile</li>
           </ul>
         </div>
         <div class="tl-item reveal">
           <div class="tl-dot old"></div>
           <div class="tl-header">
-            <span class="tl-title">Chef de Projet &amp; Admin RH</span>
-            <span class="tl-badge">Oct 2024 – Mai 2025</span>
+            <span class="tl-title">Responsable IT &amp; Opérations</span>
+            <span class="tl-badge">Oct. 2024 – Mai 2025</span>
           </div>
           <div class="tl-company">ALOM Services — Goma, RDC</div>
           <ul class="tl-desc">
-            <li>Pilotage de projets d'impression numérique à haute complexité</li>
-            <li>Supervision d'équipe multi-profils, optimisation des flux de production</li>
-            <li>Administration RH complète : recrutement, paie, conformité</li>
-            <li>Introduction de processus d'automatisation réduisant les délais de livraison</li>
+            <li>Lancement technique et opérationnel d'une start-up d'impression numérique et de services IT, du budget au déploiement</li>
+            <li>Achat du matériel, installation du réseau local, des postes et des imprimantes industrielles</li>
+            <li>Mise en place d'un cybercafé et d'un centre de formation ; recrutement des premiers techniciens</li>
           </ul>
         </div>
         <div class="tl-item reveal">
           <div class="tl-dot old"></div>
           <div class="tl-header">
-            <span class="tl-title">Technicien Réseau</span>
-            <span class="tl-badge">2022</span>
+            <span class="tl-title">Informaticien (mission terrain)</span>
+            <span class="tl-badge">Août 2024</span>
           </div>
-          <div class="tl-company">Canalbox / Vivendi Group Africa — Goma, RDC</div>
+          <div class="tl-company">Genocost — Goma, RDC</div>
           <ul class="tl-desc">
-            <li>Déploiement d'infrastructures réseau très haut débit</li>
-            <li>Installation fibre optique FTTH, câblage structuré, mise en service</li>
-            <li>Maintenance préventive et corrective sur parc client</li>
+            <li>Infrastructure IT temporaire et support pour la commémoration nationale ; communications d'urgence</li>
           </ul>
         </div>
         <div class="tl-item reveal">
           <div class="tl-dot old"></div>
           <div class="tl-header">
-            <span class="tl-title">Agent de Terrain</span>
+            <span class="tl-title">Technicien déploiement réseau (contrat)</span>
+            <span class="tl-badge">Sept. 2022</span>
+          </div>
+          <div class="tl-company">Canalbox / Group Vivendi Africa — Goma, RDC</div>
+          <ul class="tl-desc">
+            <li>Câblage structuré du nouveau bureau de Goma, montage des baies et panneaux de brassage</li>
+          </ul>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-dot old"></div>
+          <div class="tl-header">
+            <span class="tl-title">Assistant informaticien</span>
             <span class="tl-badge">2021</span>
           </div>
-          <div class="tl-company">HIMA Cement / LafargeHolcim — Goma, RDC</div>
+          <div class="tl-company">Hima Cement / LafargeHolcim — Goma, RDC</div>
           <ul class="tl-desc">
-            <li>Support technique terrain, collecte de données via KoboCollect</li>
-            <li>Développement de marché et relation clientèle B2B</li>
+            <li>Support de niveau 1, outils mobiles de collecte de données (KoboCollect), gestion du parc</li>
           </ul>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-dot old"></div>
+          <div class="tl-header">
+            <span class="tl-title">Secouriste bénévole &amp; assistant magasinier</span>
+            <span class="tl-badge">Avr. 2022 – Déc. 2024</span>
+          </div>
+          <div class="tl-company">Croix-Rouge RDC</div>
+          <ul class="tl-desc">
+            <li>Gestion de dépôt, inventaires et logistique d'opérations humanitaires</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="sep">
+
+  <!-- ═══ Projets & pratique ═══ -->
+  <section id="projets" class="section">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-label">Preuves</div>
+        <h2 class="section-title">Projets &amp; pratique en cybersécurité</h2>
+        <p class="section-desc">Des réalisations concrètes et vérifiables, en développement comme en sécurité offensive et défensive.</p>
+      </div>
+      <div class="bento-grid">
+        <a class="bento-card reveal reveal-delay-1 proj-card" href="https://github.com/OscarMulume" target="_blank" rel="noopener noreferrer">
+          <div class="proj-tag">Développement</div>
+          <h3>herbo</h3>
+          <p>Application web en Next.js et TypeScript sur Supabase (PostgreSQL), avec tests de bout en bout Playwright et intégration continue.</p>
+          <span class="proj-link">Voir sur GitHub →</span>
+        </a>
+        <div class="bento-card reveal reveal-delay-2 proj-card">
+          <div class="proj-tag">Pentest · Hack The Box</div>
+          <h3>Machines Cohort &amp; Orion</h3>
+          <p>Cohort : SSRF, accès initial puis élévation de privilèges via CVE. Orion : énumération web CraftCMS et contournement d'authentification Telnet local.</p>
+        </div>
+        <div class="bento-card reveal reveal-delay-3 proj-card">
+          <div class="proj-tag">DFIR · Blue Team</div>
+          <h3>Sherlocks Brutus &amp; Investigate Web Attack</h3>
+          <p>Reconstitution de kill chains à partir de logs : brute force SSH (auth.log, wtmp, MITRE T1136), scan Nikto, brute force web et injection de commandes.</p>
+        </div>
+        <div class="bento-card reveal reveal-delay-4 proj-card">
+          <div class="proj-tag">Formation continue</div>
+          <h3>HTB Academy · Niveau 25</h3>
+          <p>Parcours « Cracking into Hack The Box » terminé, plus de 10 modules (Nmap, SQL Injection, Linux, Web Requests). CTF AAR Cyber, Octobre Cyber 2026.</p>
+        </div>
+        <div class="bento-card reveal reveal-delay-5 proj-card">
+          <div class="proj-tag">Infrastructure</div>
+          <h3>Cloud privé Raspberry Pi</h3>
+          <p>Serveur de stockage personnel sur Raspberry Pi 5 avec Nextcloud, accessible à distance de façon sécurisée via Tailscale.</p>
+        </div>
+        <div class="bento-card reveal reveal-delay-5 proj-card">
+          <div class="proj-tag">Réseau · Sécurité</div>
+          <h3>Formation pfSense</h3>
+          <p>Supports pour apprendre à configurer et administrer pfSense, pare-feu et routeur open source.</p>
         </div>
       </div>
     </div>
@@ -306,8 +373,7 @@ import ThemeToggle from '../components/ThemeToggle.astro';
           <div class="skill-tags">
             <span class="skill-tag">AWS Bedrock</span>
             <span class="skill-tag">Machine Learning</span>
-            <span class="skill-tag">AWS Well-Architected</span>
-            <span class="skill-tag">Générative AI</span>
+                        <span class="skill-tag">Générative AI</span>
           </div>
         </div>
         <div class="skill-group reveal reveal-delay-4">
@@ -335,12 +401,17 @@ import ThemeToggle from '../components/ThemeToggle.astro';
       <div class="certs-section reveal">
         <h3>Certifications</h3>
         <div class="certs-wrap">
-          <span class="cert-pill">🔒 Cisco Junior Cybersecurity Analyst — Mars 2026</span>
-          <span class="cert-pill">🌐 CCNA 1 — ITN v7 (75.80%) — Juillet 2022</span>
-          <span class="cert-pill">🐧 NDG Linux Unhatched (97.33%) — Juillet 2022</span>
-          <span class="cert-pill">🤖 AWS Fundamentals of Generative AI — Nov 2025</span>
-          <span class="cert-pill">☁️ AWS Well-Architected Framework</span>
-          <span class="cert-pill">📡 UNHCR RETS — Refugee Emergency Telecom — Fév 2026</span>
+          <span class="cert-pill">🔒 Cisco · Junior Cybersecurity Analyst Career Path — Mars 2026</span>
+          <span class="cert-pill">🌐 Cisco · Networking Devices and Initial Configuration — Mars 2026</span>
+          <span class="cert-pill">🌐 Cisco · Networking Basics — Mars 2026</span>
+          <span class="cert-pill">🌐 Cisco · CCNA: Introduction to Networks — 2022</span>
+          <span class="cert-pill">🔒 Cisco · Introduction to Cybersecurity — 2022</span>
+          <span class="cert-pill">🐧 NDG Linux Essentials — 2022</span>
+          <span class="cert-pill">🐧 NDG Linux Unhatched — 2022</span>
+          <span class="cert-pill">🤖 AWS · Fundamentals of Generative AI — Nov 2025</span>
+          <span class="cert-pill">📡 UNHCR · RETS, télécoms d'urgence — Fév 2026</span>
+          <span class="cert-pill">🌍 Internet Society · Grant Ready — 2026</span>
+          <span class="cert-pill">⏳ En cours : Cisco Ethical Hacker · CCNA SRWE</span>
         </div>
       </div>
     </div>
@@ -357,10 +428,10 @@ import ThemeToggle from '../components/ThemeToggle.astro';
       </div>
       <div class="cv-card reveal">
         <div class="cv-top">
-          <div class="cv-avatar">OM</div>
+          <img class="cv-avatar cv-photo" src="/portrait.webp" alt="Oscar Mulume Izuba" width="80" height="80" loading="lazy" />
           <div>
             <div class="cv-name">MULUME IZUBA OSCAR</div>
-            <div class="cv-role">IT/Network Architect · Cybersecurity Analyst · Full-Stack Developer</div>
+            <div class="cv-role">Spécialiste Infrastructure IT, Réseaux &amp; Cybersécurité</div>
             <div class="cv-loc">📍 Kinshasa, RDC</div>
           </div>
         </div>
@@ -375,7 +446,7 @@ import ThemeToggle from '../components/ThemeToggle.astro';
           </div>
           <div>
             <div class="cv-field-label">Certifications</div>
-            <div class="cv-field-val">15+ (Cisco, AWS, UNHCR, OpenClassrooms)</div>
+            <div class="cv-field-val">10+ vérifiables (Cisco, AWS, UNHCR, Internet Society)</div>
           </div>
           <div>
             <div class="cv-field-label">Langues</div>
@@ -385,10 +456,10 @@ import ThemeToggle from '../components/ThemeToggle.astro';
         <div class="cv-actions">
           <a href="/cv-oscar-mulume.pdf" target="_blank" class="btn-p">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3M19 19H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V17a2 2 0 01-2 2z"/></svg>
-            Télécharger CV (PDF)
+            CV en français (PDF)
           </a>
-          <a href="#contact" class="btn-s">Me contacter</a>
-        </div>
+          <a href="/cv-oscar-mulume-en.pdf" target="_blank" class="btn-s">CV in English (PDF)</a>
+          </div>
       </div>
     </div>
   </section>
@@ -401,7 +472,7 @@ import ThemeToggle from '../components/ThemeToggle.astro';
       <div class="section-header reveal">
         <div class="section-label">Connexion</div>
         <h2 class="section-title">Parlons de votre prochain projet</h2>
-        <p class="section-desc">Un infrastructure à sécuriser ? Un réseau à déployer ? Une application à concevoir ? Je suis disponible pour des missions en Afrique Centrale et en remote.</p>
+        <p class="section-desc">Une infrastructure à sécuriser ? Un réseau à déployer ? Une application à concevoir ? Je suis disponible pour des missions en Afrique Centrale et en remote.</p>
       </div>
       <div class="contact-grid">
         <form class="contact-form reveal" action="https://formspree.io/f/xpwzgkqr" method="POST">
@@ -448,7 +519,7 @@ import ThemeToggle from '../components/ThemeToggle.astro';
             </div>
             <div>
               <div class="ci-label">Email</div>
-              <div class="ci-val">oscarmulume1612@gmail.com</div>
+              <div class="ci-val"><a href="mailto:oscarmulume1612@gmail.com">oscarmulume1612@gmail.com</a></div>
             </div>
           </div>
           <div class="ci-card">
@@ -457,7 +528,7 @@ import ThemeToggle from '../components/ThemeToggle.astro';
             </div>
             <div>
               <div class="ci-label">LinkedIn</div>
-              <div class="ci-val">Oscar Mulume</div>
+              <div class="ci-val"><a href="https://www.linkedin.com/in/oscar-mulume-95666b225/" target="_blank" rel="noopener noreferrer">Oscar Mulume</a></div>
             </div>
           </div>
           <div class="ci-card">
@@ -466,7 +537,7 @@ import ThemeToggle from '../components/ThemeToggle.astro';
             </div>
             <div>
               <div class="ci-label">GitHub</div>
-              <div class="ci-val">@OscarMulume</div>
+              <div class="ci-val"><a href="https://github.com/OscarMulume" target="_blank" rel="noopener noreferrer">@OscarMulume</a></div>
             </div>
           </div>
           <div class="ci-card">
@@ -492,7 +563,7 @@ import ThemeToggle from '../components/ThemeToggle.astro';
     <div class="footer-inner">
       <div class="footer-brand">
         <a href="/" class="logo">Oscar<span>Mulume</span></a>
-        <p>IT/Network Architect et Cybersecurity Analyst. Architecture réseau, cybersécurité et développement IA pour l'Afrique Centrale. SLA 99.9%, réponse garantie en 2h.</p>
+        <p>Spécialiste infrastructure IT, réseaux et cybersécurité à Kinshasa. Architecture réseau, sécurité et développement pour l'Afrique centrale.</p>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
@@ -520,6 +591,9 @@ import ThemeToggle from '../components/ThemeToggle.astro';
       <span>Kinshasa, RDC — Afrique Centrale</span>
     </div>
   </footer>
+
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
 
   <!-- ═══ Scripts ═══ -->
   <script>
@@ -569,6 +643,40 @@ import ThemeToggle from '../components/ThemeToggle.astro';
       window.dispatchEvent(new CustomEvent('themechange', { detail: { theme: current } }));
     };
     syncBodyTheme();
+
+    // Curseur personnalisé + boutons « magnétiques » (ordinateur, animations autorisées)
+    const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (fine && !calm) {
+      const dot = document.querySelector('.cursor-dot') as HTMLElement;
+      const ring = document.querySelector('.cursor-ring') as HTMLElement;
+      let cx = -100, cy = -100, rx = -100, ry = -100;
+      document.documentElement.classList.add('has-cursor');
+      window.addEventListener('mousemove', (e) => {
+        cx = e.clientX; cy = e.clientY;
+        dot.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
+      });
+      const follow = () => {
+        rx += (cx - rx) * 0.18; ry += (cy - ry) * 0.18;
+        ring.style.transform = `translate3d(${rx}px, ${ry}px, 0)`;
+        requestAnimationFrame(follow);
+      };
+      follow();
+      document.querySelectorAll('a, button, .bento-card, .stat-card').forEach((el) => {
+        el.addEventListener('mouseenter', () => document.documentElement.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.documentElement.classList.remove('cursor-hover'));
+      });
+      document.querySelectorAll('.btn-p, .btn-s, .nav-cta').forEach((el) => {
+        const b = el as HTMLElement;
+        b.addEventListener('mousemove', (e) => {
+          const r = b.getBoundingClientRect();
+          const x = (e as MouseEvent).clientX - (r.left + r.width / 2);
+          const y = (e as MouseEvent).clientY - (r.top + r.height / 2);
+          b.style.transform = `translate(${x * 0.2}px, ${y * 0.25}px)`;
+        });
+        b.addEventListener('mouseleave', () => { b.style.transform = ''; });
+      });
+    }
   </script>
 
   <script>

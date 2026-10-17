@@ -1,0 +1,262 @@
+---
+// Portrait interactif : photo recomposée en particules (souris = dispersion),
+// effet de profondeur 3D qui suit le pointeur. Repli sur une image simple
+// sur mobile, sans JavaScript ou avec « réduire les animations ».
+---
+
+<div class="pfx" id="pfx">
+  <div class="pfx-tilt" id="pfxTilt">
+    <div class="pfx-glow" aria-hidden="true"></div>
+    <div class="pfx-ring" aria-hidden="true"></div>
+    <div class="pfx-frame">
+      <picture>
+        <source srcset="/portrait.webp" type="image/webp" />
+        <img
+          class="pfx-img"
+          id="pfxImg"
+          src="/portrait.jpg"
+          width="720"
+          height="720"
+          alt="Portrait d'Oscar Mulume Izuba"
+          fetchpriority="high"
+        />
+      </picture>
+      <canvas class="pfx-canvas" id="pfxCanvas" aria-hidden="true"></canvas>
+    </div>
+    <div class="pfx-chip chip-a" aria-hidden="true"><span class="dot"></span>Cisco · Junior Cybersecurity Analyst</div>
+    <div class="pfx-chip chip-b" aria-hidden="true">SLA 99,9 %</div>
+    <div class="pfx-chip chip-c" aria-hidden="true">Hack The Box · Niv. 25</div>
+  </div>
+  <p class="pfx-hint" id="pfxHint" aria-hidden="true">Passez la souris sur le portrait</p>
+</div>
+
+<style>
+  .pfx {
+    --size: min(420px, 78vw);
+    position: relative;
+    width: var(--size);
+    margin: 0 auto;
+    perspective: 1000px;
+  }
+  .pfx-tilt {
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+    transform-style: preserve-3d;
+    transition: transform 0.25s ease-out;
+    will-change: transform;
+  }
+  .pfx-frame {
+    position: absolute;
+    inset: 8%;
+    border-radius: 50%;
+    overflow: hidden;
+    transform: translateZ(40px);
+    box-shadow: 0 30px 60px -20px rgba(15, 23, 42, 0.45);
+    background: var(--bg2, #e5e7eb);
+  }
+  .pfx-img,
+  .pfx-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  .pfx-canvas { opacity: 0; transition: opacity 0.4s ease; }
+  .pfx.fx-on .pfx-canvas { opacity: 1; }
+  .pfx.fx-on .pfx-img { opacity: 0; }
+  .pfx-glow {
+    position: absolute;
+    inset: 4%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.55), rgba(34, 211, 238, 0.25) 45%, transparent 70%);
+    filter: blur(28px);
+    transform: translateZ(-30px);
+  }
+  .pfx-ring {
+    position: absolute;
+    inset: 3%;
+    border-radius: 50%;
+    border: 1px dashed rgba(99, 102, 241, 0.45);
+    transform: translateZ(10px);
+    animation: pfx-spin 40s linear infinite;
+  }
+  .pfx-chip {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--text, #0f172a);
+    background: var(--nav-bg, rgba(255, 255, 255, 0.82));
+    border: 1px solid var(--glass-border, rgba(15, 23, 42, 0.08));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.35);
+    transform: translateZ(90px);
+  }
+  .pfx-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2); }
+  .chip-a { top: 4%; left: -6%; }
+  .chip-b { top: 46%; right: -8%; }
+  .chip-c { bottom: 6%; left: 2%; }
+  .pfx-hint {
+    margin-top: 14px;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text3, #64748b);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .pfx.fx-on .pfx-hint { opacity: 1; }
+  @keyframes pfx-spin { to { transform: translateZ(10px) rotate(360deg); } }
+  @media (max-width: 640px) {
+    .chip-a { left: -2%; }
+    .chip-b { right: -2%; }
+    .pfx-chip { font-size: 11px; padding: 6px 10px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pfx-ring { animation: none; }
+    .pfx-tilt { transition: none; }
+  }
+</style>
+
+<script>
+  (() => {
+    const root = document.getElementById('pfx');
+    const tilt = document.getElementById('pfxTilt') as HTMLElement | null;
+    const canvas = document.getElementById('pfxCanvas') as HTMLCanvasElement | null;
+    if (!root || !tilt || !canvas) return;
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    // ── Effet 3D : le portrait suit le pointeur ──
+    if (!reduce && finePointer) {
+      const area = root.closest('.hero') || root;
+      area.addEventListener('mousemove', (e) => {
+        const ev = e as MouseEvent;
+        const r = root.getBoundingClientRect();
+        const x = (ev.clientX - (r.left + r.width / 2)) / r.width;
+        const y = (ev.clientY - (r.top + r.height / 2)) / r.height;
+        tilt.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 14}deg)`;
+      });
+      area.addEventListener('mouseleave', () => { tilt.style.transform = ''; });
+    }
+
+    // ── Particules : seulement sur ordinateur, animations autorisées ──
+    if (reduce || !finePointer) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    const img = new Image();
+    img.src = '/portrait.jpg';
+
+    type Pt = { x: number; y: number; hx: number; hy: number; vx: number; vy: number; c: string };
+    let pts: Pt[] = [];
+    let W = 0, H = 0, dpr = 1, cell = 3;
+    let mx = -9999, my = -9999;
+    let running = false, visible = true, rafId = 0;
+
+    function build() {
+      const rect = canvas!.getBoundingClientRect();
+      if (!rect.width) return;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = Math.round(rect.width); H = Math.round(rect.height);
+      canvas!.width = W * dpr; canvas!.height = H * dpr;
+      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      cell = W > 300 ? 3 : 4;
+      const cols = Math.floor(W / cell), rows = Math.floor(H / cell);
+      const off = document.createElement('canvas');
+      off.width = cols; off.height = rows;
+      const octx = off.getContext('2d', { willReadFrequently: true });
+      if (!octx) return;
+      octx.drawImage(img, 0, 0, cols, rows);
+      const data = octx.getImageData(0, 0, cols, rows).data;
+
+      const prev = pts;
+      pts = [];
+      for (let j = 0; j < rows; j++) {
+        for (let i = 0; i < cols; i++) {
+          const k = (j * cols + i) * 4;
+          const hx = i * cell, hy = j * cell;
+          const p = prev[pts.length];
+          pts.push({
+            hx, hy,
+            x: p ? p.x : Math.random() * W,
+            y: p ? p.y : Math.random() * H,
+            vx: 0, vy: 0,
+            c: `rgb(${data[k]},${data[k + 1]},${data[k + 2]})`,
+          });
+        }
+      }
+    }
+
+    const R = 70;           // rayon d'influence de la souris (px)
+    const FORCE = 2.4;      // puissance de dispersion
+    const SPRING = 0.06;    // retour vers la position d'origine
+    const FRICTION = 0.82;
+
+    function frame() {
+      if (!running) return;
+      ctx!.clearRect(0, 0, W, H);
+      let moving = false;
+      for (const p of pts) {
+        const dx = p.x - mx, dy = p.y - my;
+        const d2 = dx * dx + dy * dy;
+        if (d2 < R * R) {
+          const d = Math.sqrt(d2) || 1;
+          const f = (1 - d / R) * FORCE;
+          p.vx += (dx / d) * f * 4;
+          p.vy += (dy / d) * f * 4;
+        }
+        p.vx = (p.vx + (p.hx - p.x) * SPRING) * FRICTION;
+        p.vy = (p.vy + (p.hy - p.y) * SPRING) * FRICTION;
+        p.x += p.vx; p.y += p.vy;
+        if (!moving && (Math.abs(p.vx) > 0.05 || Math.abs(p.vy) > 0.05)) moving = true;
+        ctx!.fillStyle = p.c;
+        ctx!.fillRect(p.x, p.y, cell, cell);
+      }
+      // Économie : on s'arrête quand tout est au repos et la souris absente.
+      if (!moving && mx < -1000) { running = false; return; }
+      rafId = requestAnimationFrame(frame);
+    }
+
+    function wake() {
+      if (running || !visible) return;
+      running = true;
+      rafId = requestAnimationFrame(frame);
+    }
+
+    canvas.addEventListener('mousemove', (e) => {
+      const r = canvas.getBoundingClientRect();
+      mx = e.clientX - r.left; my = e.clientY - r.top;
+      wake();
+    });
+    canvas.addEventListener('mouseleave', () => { mx = -9999; my = -9999; wake(); });
+
+    new IntersectionObserver((entries) => {
+      visible = entries[0].isIntersecting;
+      if (visible) wake(); else { running = false; cancelAnimationFrame(rafId); }
+    }).observe(root);
+
+    let resizeT = 0;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeT);
+      resizeT = window.setTimeout(() => { build(); wake(); }, 150);
+    });
+
+    img.onload = () => {
+      build();
+      root.classList.add('fx-on');
+      wake(); // assemblage initial : les particules rejoignent le portrait
+    };
+  })();
+</script>
