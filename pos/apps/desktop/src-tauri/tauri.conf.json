@@ -1,0 +1,63 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "M-Sec POS",
+  "version": "0.1.0",
+  "identifier": "com.msec.pos",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "M-Sec POS",
+        "width": 1280,
+        "height": 800,
+        "minWidth": 1024,
+        "minHeight": 700,
+        "resizable": true,
+        "center": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; connect-src 'self' https://api.pos.msec.app wss://api.pos.msec.app https://updates.pos.msec.app; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'",
+      "freezePrototype": true,
+      "dangerousDisableAssetCspModification": false,
+      "isolation": {
+        "pattern": {
+          "useLocalFromFiles": true,
+          "localPath": "/isolation/index.html",
+          "remotePath": null,
+          "timeout": 100
+        }
+      }
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "nsis",
+      "msi",
+      "dmg",
+      "appimage"
+    ],
+    "category": "Finance",
+    "shortDescription": "Point de vente M-Sec",
+    "longDescription": "Caisse fixe local-first de l'ecosysteme M-Sec POS.",
+    "publisher": "M-Sec",
+    "copyright": "Copyright (c) 2026 M-Sec",
+    "updater": {
+      "active": true,
+      "endpoints": [
+        "https://updates.pos.msec.app/{{target}}/{{arch}}/{{current_version}}"
+      ],
+      "pubkey": "<REMPLACER_PAR_LA_CLE_PUBLIQUE_ED25519_64_CARACTERES>",
+      "windows": {
+        "installMode": "basicUi"
+      }
+    }
+  }
+}

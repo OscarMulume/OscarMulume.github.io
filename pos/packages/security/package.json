@@ -1,0 +1,49 @@
+{
+  "name": "@pos/security",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Stockage sécurisé des secrets (Keychain/Keystore) + configuration SSL Pinning",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./mobile": {
+      "types": "./dist/storage/keychain.mobile.d.ts",
+      "import": "./dist/storage/keychain.mobile.js"
+    },
+    "./desktop": {
+      "types": "./dist/storage/keychain.desktop.d.ts",
+      "import": "./dist/storage/keychain.desktop.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "@tauri-apps/api": "^2.4.0",
+    "expo-secure-store": "~15.0.7"
+  },
+  "peerDependenciesMeta": {
+    "@tauri-apps/api": {
+      "optional": true
+    },
+    "expo-secure-store": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@tauri-apps/api": "^2.4.0",
+    "expo-secure-store": "~15.0.7",
+    "typescript": "~5.9.2"
+  }
+}
