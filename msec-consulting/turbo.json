@@ -1,0 +1,51 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [
+    "tsconfig.base.json",
+    ".npmrc"
+  ],
+  "globalEnv": [
+    "NODE_ENV",
+    "MSEC_SESSION_SECRET",
+    "MSEC_DOCS_MASTER_KEY",
+    "MSEC_DATABASE_URL",
+    "NEXT_PUBLIC_MSEC_API_URL"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**",
+        ".next/**",
+        "!.next/cache/**"
+      ]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "test": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [],
+      "inputs": [
+        "tests/**"
+      ]
+    },
+    "typecheck": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": []
+    },
+    "lint": {
+      "outputs": []
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}

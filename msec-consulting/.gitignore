@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Builds
+dist/
+build/
+.next/
+out/
+
+# Turbo cache
+.turbo/
+
+# Expo
+apps/mobile-consulting/.expo/
+apps/mobile-consulting/android/
+apps/mobile-consulting/ios/
+apps/mobile-consulting/web-build/
+
+# Next.js
+next-env.d.ts
+.next/
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+pnpm-debug.*
+
+# Env — jamais committer les secrets.
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/

@@ -1,0 +1,29 @@
+{
+  "name": "msec-consulting",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MSEC CONSULTING — Vitrine SEO + portail client (devis/factures), monorepo Turborepo.",
+  "packageManager": "npm@11.19.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.0",
+    "typescript": "~5.9.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "allowScripts": {
+    "esbuild": true
+  }
+}

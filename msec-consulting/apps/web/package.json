@@ -1,0 +1,29 @@
+{
+  "name": "@msec/web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Vitrine SEO (SSG/ISR) + portail client (SSR) — Next.js App Router.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@msec/api": "0.1.0",
+    "@msec/core": "0.1.0",
+    "@msec/security": "0.1.0",
+    "@msec/ui": "0.1.0",
+    "@trpc/server": "^11.19.0",
+    "next": "15.5.25",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/react": "~19.1.10",
+    "@types/react-dom": "~19.1.6",
+    "typescript": "~5.9.2"
+  }
+}
