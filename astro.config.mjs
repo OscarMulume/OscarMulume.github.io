@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
 
-// Importé automatiquement par Vercel (static output) — pas d'adapter requis
 export default defineConfig({
   site: 'https://oscarmulume.github.io',
   output: 'static',
@@ -8,6 +8,7 @@ export default defineConfig({
     inlineStylesheets: 'auto',
   },
   vite: {
+    plugins: [tailwindcss()],
     build: {
       cssMinify: 'esbuild',
       target: 'esnext',

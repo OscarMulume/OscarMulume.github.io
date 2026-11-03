@@ -3,7 +3,9 @@
    Compatible Light / Dark (Lumière Basse) / High Contrast
    ═══════════════════════════════════════════════════════════ */
 
-@import "tailwindcss";
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
 @config "../../tailwind.config.mjs";
 
 /* Variantes Tailwind branchées sur le data-theme (v4 CSS-first) */
