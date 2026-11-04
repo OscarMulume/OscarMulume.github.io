@@ -17,7 +17,7 @@ La refonte compilée antérieure reste sauvegardée sur la branche `archive/comp
 | Étape | Fichiers | Tests | Commit | Tag | Poussé |
 |---|---|---|---|---|---|
 | 1 — Filet de sécurité, captures de référence et build reproductible | `AGENTS.md`, `astro.config.mjs`, `src/styles/global.css`, `package.json`, `package-lock.json`, `.npmrc`, `.gitignore`, `tests/visual/*`, ce rapport | `npm run build` OK ; 6 captures ; comparaison visuelle 6/6 à 0,000 % | `5d31013` | `portfolio-src-step-1` | oui |
-| 2 — Reconstruction des sources Astro | 27 fichiers : `src/pages/index.astro`, `src/layouts/BaseLayout.astro`, `src/components/*.astro`, `src/data/profile.json`, `src/styles/*.css`, `public/*`, `.github/workflows/deploy.yml`, suppression des artefacts compilés de la racine, ce rapport | `npm run build` OK ; `npm run check` 0 erreur ; `npm run validate:html` OK ; comparaison visuelle 6/6 à 0,000 % | `portfolio-src-step-2` (voir `git log`) | `portfolio-src-step-2` | oui |
+| 2 — Reconstruction des sources Astro | 28 fichiers : `src/pages/index.astro`, `src/layouts/BaseLayout.astro`, `src/components/*.astro`, `src/data/profile.json`, `src/styles/*.css`, `public/*`, `.github/workflows/deploy.yml`, suppression des artefacts compilés de la racine, ce rapport | `npm run build` OK ; `npm run check` 0 erreur ; `npm run validate:html` OK ; comparaison visuelle 6/6 à 0,000 % | `36dbf77` | `portfolio-src-step-2` | oui |
 
 ## Étape 1 — détails
 
