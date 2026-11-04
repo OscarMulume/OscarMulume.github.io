@@ -14,6 +14,12 @@
       "fullName": "Oscar Mulume",
       "legalName": "MULUME IZUBA OSCAR"
     },
+    "company": {
+      "name": "M-SEC Technology Consulting",
+      "shortName": "M-SEC",
+      "url": "https://oscarmulume.github.io/msec-technology-consulting/",
+      "description": "Conseil IT, réseaux et cybersécurité à Kinshasa."
+    },
     "copyright": "Oscar Mulume. Tous droits réservés.",
     "location": "Kinshasa, RDC — Afrique Centrale"
   },
@@ -41,6 +47,7 @@
       { "label": "Contact", "href": "#contact" }
     ],
     "cta": { "label": "Me contacter", "href": "#contact" },
+    "company": { "label": "M-SEC", "title": "M-SEC Technology Consulting" },
     "menuLabel": "Menu"
   },
   "hero": {
@@ -55,7 +62,7 @@
     "stats": [
       { "value": "2021", "label": "En IT depuis" },
       { "value": "5", "label": "Entités sécurisées chez Malaïka" },
-      { "value": "10+", "label": "Certifications vérifiables" },
+      { "value": "5", "label": "Badges Cisco vérifiés" },
       { "value": "99,9 %", "label": "SLA maintenu" }
     ],
     "portrait": {
@@ -220,11 +227,26 @@
       "description": "Des réalisations concrètes et vérifiables, en développement comme en sécurité offensive et défensive.",
       "items": [
         {
-          "tag": "Développement",
-          "title": "herbo",
-          "description": "Application web en Next.js et TypeScript sur Supabase (PostgreSQL), avec tests de bout en bout Playwright et intégration continue.",
-          "href": "https://github.com/OscarMulume",
-          "linkLabel": "Voir sur GitHub →"
+          "tag": "Produit M-SEC",
+          "status": "En cours",
+          "title": "POS Pro",
+          "description": "Caisse pour restaurant pensée pour fonctionner hors ligne, avec application web et déclinaisons bureau et mobile. Développement en cours, pas encore disponible en ligne."
+        },
+        {
+          "tag": "Boutique en ligne",
+          "status": "En ligne",
+          "title": "Malaika Ranch",
+          "description": "Boutique en ligne avec commande via WhatsApp.",
+          "href": "https://malaika-ranch-web.vercel.app",
+          "linkLabel": "Voir la boutique →"
+        },
+        {
+          "tag": "Site vitrine",
+          "status": "En ligne",
+          "title": "Site M-SEC Technology Consulting",
+          "description": "Site vitrine de M-SEC Technology Consulting : conseil IT, réseaux et cybersécurité à Kinshasa.",
+          "href": "https://oscarmulume.github.io/msec-technology-consulting/",
+          "linkLabel": "Voir le site →"
         },
         {
           "tag": "Pentest · Hack The Box",
@@ -237,19 +259,9 @@
           "description": "Reconstitution de kill chains à partir de logs : brute force SSH (auth.log, wtmp, MITRE T1136), scan Nikto, brute force web et injection de commandes."
         },
         {
-          "tag": "Formation continue",
-          "title": "HTB Academy · Niveau 25",
-          "description": "Parcours « Cracking into Hack The Box » terminé, plus de 10 modules (Nmap, SQL Injection, Linux, Web Requests). CTF AAR Cyber, Octobre Cyber 2026."
-        },
-        {
           "tag": "Infrastructure",
           "title": "Cloud privé Raspberry Pi",
           "description": "Serveur de stockage personnel sur Raspberry Pi 5 avec Nextcloud, accessible à distance de façon sécurisée via Tailscale."
-        },
-        {
-          "tag": "Réseau · Sécurité",
-          "title": "Formation pfSense",
-          "description": "Supports pour apprendre à configurer et administrer pfSense, pare-feu et routeur open source."
         }
       ]
     },
@@ -277,20 +289,42 @@
           "title": "Langues",
           "tags": ["🇫🇷 Français (natif/bilingue)", "🇬🇧 Anglais (pro/technique)", "🇰🇮 Swahili (pro)", "🇨🇩 Lingala (intermédiaire)"]
         }
+      ]
+    },
+    "credentials": {
+      "label": "Preuves vérifiables",
+      "title": "Badges Cisco Networking Academy vérifiés",
+      "description": "Cinq badges délivrés par Cisco Networking Academy, vérifiables sur Credly. Ce sont des badges de formation, et non des certifications professionnelles.",
+      "issuer": "Cisco Networking Academy",
+      "issuedLabel": "Délivré le",
+      "verifyLabel": "Vérifier sur Credly",
+      "profileLabel": "Voir les 5 badges sur Credly",
+      "profileUrl": "https://www.credly.com/users/oscar-mulume",
+      "othersLabel": "Autres badges Cisco",
+      "items": [
+        {
+          "name": "Ethical Hacker",
+          "date": "23 octobre 2026",
+          "dateTime": "2026-10-23",
+          "url": "https://www.credly.com/badges/bc73a9b9-0b18-423f-b230-485a61ddfcc6/public_url",
+          "image": "cisco-ethical-hacker.webp",
+          "alt": "Badge Cisco Networking Academy Ethical Hacker, vérifiable sur Credly",
+          "skills": ["Cadre légal et conformité", "Évaluation de vulnérabilités", "Recommandations de remédiation"]
+        },
+        {
+          "name": "Junior Cybersecurity Analyst Career Path",
+          "date": "20 mars 2026",
+          "dateTime": "2026-03-20",
+          "url": "https://www.credly.com/badges/28ac05ee-4d11-4114-9c58-15cbf86c4589/public_url",
+          "image": "cisco-junior-cybersecurity-analyst.webp",
+          "alt": "Badge Cisco Networking Academy Junior Cybersecurity Analyst Career Path, vérifiable sur Credly",
+          "skills": ["Surveillance réseau et alertes", "Pare-feu, sécurité cloud et cryptographie", "Évaluation des vulnérabilités et réponse à incident"]
+        }
       ],
-      "certificationsTitle": "Certifications",
-      "certifications": [
-        "🔒 Cisco · Junior Cybersecurity Analyst Career Path — Mars 2026",
-        "🌐 Cisco · Networking Devices and Initial Configuration — Mars 2026",
-        "🌐 Cisco · Networking Basics — Mars 2026",
-        "🌐 Cisco · CCNA: Introduction to Networks — 2022",
-        "🔒 Cisco · Introduction to Cybersecurity — 2022",
-        "🐧 NDG Linux Essentials — 2022",
-        "🐧 NDG Linux Unhatched — 2022",
-        "🤖 AWS · Fundamentals of Generative AI — Nov 2025",
-        "📡 UNHCR · RETS, télécoms d'urgence — Fév 2026",
-        "🌍 Internet Society · Grant Ready — 2026",
-        "⏳ En cours : Cisco Ethical Hacker · CCNA SRWE"
+      "others": [
+        { "name": "Networking Devices and Initial Configuration", "date": "17 mars 2026", "dateTime": "2026-03-17", "url": "https://www.credly.com/users/oscar-mulume" },
+        { "name": "Networking Basics", "date": "4 mars 2026", "dateTime": "2026-03-04", "url": "https://www.credly.com/users/oscar-mulume" },
+        { "name": "Introduction to Cybersecurity", "date": "10 juillet 2022", "dateTime": "2022-07-10", "url": "https://www.credly.com/users/oscar-mulume" }
       ]
     },
     "cv": {
@@ -308,7 +342,7 @@
       "fields": [
         { "label": "Formation", "value": "Licence Réseaux, Télécoms & Maintenance — ISIPA 2025" },
         { "label": "Diplôme", "value": "Diplôme Sup. Informatique — ISIG Goma (2019-2025)" },
-        { "label": "Certifications", "value": "10+ vérifiables (Cisco, AWS, UNHCR, Internet Society)" },
+        { "label": "Badges Cisco", "value": "5 badges Networking Academy vérifiés sur Credly" },
         { "label": "Langues", "value": "FR / EN / SW / Lingala" }
       ],
       "actions": [
@@ -393,6 +427,13 @@
           "external": true
         },
         {
+          "icon": "grid",
+          "label": "Entreprise",
+          "value": "M-SEC Technology Consulting",
+          "href": "https://oscarmulume.github.io/msec-technology-consulting/",
+          "external": true
+        },
+        {
           "icon": "phone",
           "label": "Téléphone",
           "value": "+243 975 585 150"
@@ -425,7 +466,9 @@
             { "label": "À propos", "href": "#apropos" },
             { "label": "Expériences", "href": "#experiences" },
             { "label": "Compétences", "href": "#competences" },
-            { "label": "CV", "href": "#cv" }
+            { "label": "Badges Cisco", "href": "#badges" },
+            { "label": "CV", "href": "#cv" },
+            { "label": "M-SEC Technology Consulting", "href": "https://oscarmulume.github.io/msec-technology-consulting/", "external": true }
           ]
         },
         {

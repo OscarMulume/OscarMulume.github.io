@@ -16,14 +16,20 @@ const { projects } = profile.sections;
         const className = `bento-card reveal reveal-delay-${Math.min(index + 1, 5)} proj-card`;
         return project.href ? (
           <a class={className} href={project.href} target="_blank" rel="noopener noreferrer">
-            <div class="proj-tag">{project.tag}</div>
+            <div class="proj-head">
+              <div class="proj-tag">{project.tag}</div>
+              {project.status && <span class="proj-status">{project.status}</span>}
+            </div>
             <h3>{project.title}</h3>
             <p>{project.description}</p>
             {project.linkLabel && <span class="proj-link">{project.linkLabel}</span>}
           </a>
         ) : (
           <div class={className}>
-            <div class="proj-tag">{project.tag}</div>
+            <div class="proj-head">
+              <div class="proj-tag">{project.tag}</div>
+              {project.status && <span class="proj-status">{project.status}</span>}
+            </div>
             <h3>{project.title}</h3>
             <p>{project.description}</p>
           </div>

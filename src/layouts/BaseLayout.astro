@@ -15,6 +15,46 @@ const {
   title = DEFAULT_TITLE,
   description = DEFAULT_DESCRIPTION,
 } = Astro.props;
+
+const credentials = profile.sections.credentials;
+const credentialItems = [...credentials.items, ...credentials.others].map((credential) => ({
+  '@type': 'EducationalOccupationalCredential',
+  name: credential.name,
+  dateCreated: credential.dateTime,
+  url: credential.url,
+  credentialCategory: 'Badge',
+  recognizedBy: {
+    '@type': 'EducationalOrganization',
+    name: credentials.issuer,
+    url: 'https://www.netacad.com/',
+  },
+}));
+
+const socialLinks = (profile.sections.contact.cards as { href?: string; external?: boolean }[])
+  .filter((card) => card.external && card.href)
+  .map((card) => card.href as string);
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.site.brand.legalName,
+  alternateName: profile.site.brand.fullName,
+  jobTitle: 'Consultant IT, réseaux et cybersécurité',
+  url: profile.site.url,
+  image: `${profile.site.url}/portrait.webp`,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Kinshasa',
+    addressCountry: 'CD',
+  },
+  sameAs: [...socialLinks, credentials.profileUrl],
+  worksFor: {
+    '@type': 'Organization',
+    name: profile.site.company.name,
+    url: profile.site.company.url,
+  },
+  hasCredential: credentialItems,
+};
 ---
 
 <!DOCTYPE html>
@@ -29,6 +69,8 @@ const {
     <meta property="og:description" content={profile.site.ogDescription} />
     <meta property="og:type" content="website" />
     <meta name="color-scheme" content="light dark" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(person)} />
 
     <!-- ═══ Anti-FOUC : applique le thème avant le premier paint ═══ -->
     <script is:inline>
