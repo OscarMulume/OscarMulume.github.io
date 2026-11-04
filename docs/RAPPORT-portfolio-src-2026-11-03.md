@@ -19,7 +19,7 @@ La refonte compilée antérieure reste sauvegardée sur la branche `archive/comp
 | 1 — Filet de sécurité, captures de référence et build reproductible | `AGENTS.md`, `astro.config.mjs`, `src/styles/global.css`, `package.json`, `package-lock.json`, `.npmrc`, `.gitignore`, `tests/visual/*`, ce rapport | `npm run build` OK ; 6 captures ; comparaison visuelle 6/6 à 0,000 % | `5d31013` | `portfolio-src-step-1` | oui |
 | 2 — Reconstruction des sources Astro | 28 fichiers : `src/pages/index.astro`, `src/layouts/BaseLayout.astro`, `src/components/*.astro`, `src/data/profile.json`, `src/styles/*.css`, `public/*`, `.github/workflows/deploy.yml`, suppression des artefacts compilés de la racine, ce rapport | `npm run build` OK ; `npm run check` 0 erreur ; `npm run validate:html` OK ; comparaison visuelle 6/6 à 0,000 % | `36dbf77` | `portfolio-src-step-2` | oui |
 | 3 — Contenu vérifiable : badges Cisco, projets réels, lien M-SEC | `src/data/profile.json`, `src/components/Credentials.astro` (nouveau), `Skills.astro`, `Projects.astro`, `Hero.astro`, `Nav.astro`, `src/layouts/BaseLayout.astro`, `src/pages/index.astro`, `src/styles/global.css`, `public/media/badges/*.webp`, ce rapport | `npm run build` OK ; `npm run check` 0 erreur ; `npm run validate:html` OK ; liens externes HTTP 200 ; badges chargés en 300×300 ; aucun débordement horizontal à 390 px | `592ecbb` | `portfolio-src-step-3` | oui |
-| 4 — Qualité : liens, badges, Lighthouse, polices et images | `scripts/check-links.mjs`, `scripts/check-credentials.mjs`, `astro.config.mjs`, `Contact.astro`, `PortraitFX.astro`, `BaseLayout.astro`, `src/styles/global.css`, `src/styles/themes.css`, `public/fonts/*`, `public/portrait-{360,540,720}.webp`, ce rapport | `npm test` OK ; Lighthouse mobile 99 performance / 100 accessibilité ; liens externes et Credly vérifiés ; images de badges en 300×300 | à venir | `portfolio-src-step-4` et `portfolio-src` | à venir |
+| 4 — Qualité : liens, badges, Lighthouse, polices et images | `scripts/check-links.mjs`, `scripts/check-credentials.mjs`, `astro.config.mjs`, `Contact.astro`, `PortraitFX.astro`, `BaseLayout.astro`, `src/styles/global.css`, `src/styles/themes.css`, `public/fonts/*`, `public/portrait-{360,540,720}.webp`, ce rapport | `npm test` OK ; Lighthouse mobile 99 performance / 100 accessibilité (local et en ligne) ; liens externes et Credly vérifiés ; images de badges en 300×300 | `ca4a821` | `portfolio-src-step-4` et `portfolio-src` | oui |
 
 ## Étape 1 — détails
 
@@ -78,14 +78,16 @@ La refonte compilée antérieure reste sauvegardée sur la branche `archive/comp
 - Liens externes vérifiés HTTP 200 : profil Credly, badge Ethical Hacker, badge Junior Cybersecurity Analyst, Malaika Ranch, site M-SEC.
 - Étape 3 : `dist/index.html` contient `hasCredential`, `EducationalOccupationalCredential`, « Ethical Hacker », « Malaika Ranch », « POS Pro », « M-SEC Technology Consulting », `media/badges` et « Badges Cisco Networking Academy » ; un seul script JSON-LD.
 - Étape 3 : à 390 px, `scrollWidth` = `innerWidth` = 390 (aucun débordement) ; à 768 px, la navigation M-SEC est masquée ; à 1440 px, elle est visible ; les deux images de badges se chargent en 300×300.
-- Workflow « Déploiement GitHub Pages » vert après le push de l’étape 2 (runs `41796678743` et `41796808494`), puis après celui de l’étape 3 (run `41797909814`, build 14 s, deploy 9 s).
-- Page en ligne vérifiée après déploiement : `https://oscarmulume.github.io/` répond HTTP 200 et sert bien le portfolio reconstruit (47 483 octets, badges, projets et JSON-LD présents).
+- Workflow « Déploiement GitHub Pages » vert après le push de l’étape 2 (runs `41796678743` et `41796808494`), puis après celui de l’étape 3 (run `41797909814`, build 14 s, deploy 9 s), puis après celui de l’étape 4 (run `41799010210`, build 13 s, deploy 12 s).
+- Page en ligne vérifiée après déploiement : `https://oscarmulume.github.io/` répond HTTP 200 et sert bien le portfolio reconstruit (91 343 octets, CSS intégré, police locale, srcset du portrait, badges, projets et JSON-LD présents).
+- Lighthouse exécuté directement sur le site en ligne : performance 99, accessibilité 100, FCP 1,4 s, LCP 1,6 s, TBT 30 ms, CLS 0.
+- Toutes les ressources en ligne répondent HTTP 200 : police Inter, portraits 360/540/720, badges WebP.
 - Annotation non bloquante du workflow : actions encore déclarées pour Node.js 20, forcées sur Node.js 24 par GitHub. Aucun impact constaté.
 - Une capture mobile sombre avait varié une fois de 269 px avant stabilisation à l’étape 1 ; la capture attend désormais une hauteur de page stable avant la prise de vue. Relance : 6/6 à 0,000 %.
 
 ## Reste à faire
 
-- Pousser le commit de l’étape 4, créer les tags `portfolio-src-step-4` et `portfolio-src`, vérifier le workflow GitHub Pages et l’affichage en ligne des badges après cache (~10 min).
+- Aucun. Les étapes 1 à 4 sont terminées, testées, taguées et déployées.
 
 ## Questions pour Oscar
 
