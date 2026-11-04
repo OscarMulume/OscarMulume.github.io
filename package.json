@@ -19,7 +19,8 @@
     "serve:reference": "node tests/visual/serve.mjs . 4173",
     "capture": "node tests/visual/capture.mjs",
     "test:visual": "node tests/visual/compare.mjs",
-    "test": "npm run build && npm run check && npm run validate:html && npm run check:links && npm run check:credentials"
+    "test:assistant": "node scripts/test-assistant.mjs",
+    "test": "npm run build && npm run check && npm run validate:html && npm run check:links && npm run check:credentials && npm run test:assistant"
   },
   "dependencies": {
     "astro": "^7.4.1"

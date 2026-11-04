@@ -27,3 +27,5 @@ logs/
 # Tests visuels (sorties et diffs)
 tests/visual/output/
 tests/visual/__diff__/
+# Build de test de l assistant
+dist-assistant/

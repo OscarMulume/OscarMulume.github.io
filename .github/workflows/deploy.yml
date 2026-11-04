@@ -32,6 +32,8 @@ jobs:
 
       - name: Construire le site
         run: npm run build
+        env:
+          PUBLIC_ASSISTANT_ENABLED: ${{ vars.PUBLIC_ASSISTANT_ENABLED }}
 
       - name: Configurer Pages
         uses: actions/configure-pages@v5

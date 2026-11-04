@@ -11,6 +11,11 @@ interface Props {
 const DEFAULT_TITLE = profile.site.title;
 const DEFAULT_DESCRIPTION = profile.site.description;
 
+// L'assistant M-SEC (fichier unique hébergé sur le site M-SEC) n'est affiché que si la variable publique
+// est activée au build, après le déploiement de la fonction `assistant`.
+const ASSISTANT_SCRIPT = 'https://oscarmulume.github.io/msec-technology-consulting/assistant/msec-assistant.js';
+const assistantEnabled = import.meta.env.PUBLIC_ASSISTANT_ENABLED === 'true';
+
 const {
   title = DEFAULT_TITLE,
   description = DEFAULT_DESCRIPTION,
@@ -106,5 +111,7 @@ const person = {
   <body data-current-theme="light">
     <a class="skip-link" href="#main">{profile.site.skipLink}</a>
     <slot />
+    {assistantEnabled && <msec-assistant lang="fr"></msec-assistant>}
+    {assistantEnabled && <script is:inline defer src={ASSISTANT_SCRIPT}></script>}
   </body>
 </html>
