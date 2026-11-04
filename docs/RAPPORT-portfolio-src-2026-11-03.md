@@ -51,6 +51,8 @@ La refonte compilée antérieure reste sauvegardée sur la branche `archive/comp
 - Captures : 390, 768 et 1440 px, thèmes clair et sombre.
 - Comparaison visuelle : 6/6 captures à 0,000 % de différence (0 pixel différent), contre une référence issue du site compilé.
 - `dist/` : 9 fichiers, 462 658 octets au total.
+- Workflow « Déploiement GitHub Pages » vert après le push (run `41796678743`, build + deploy en 28 s).
+- Page en ligne vérifiée après déploiement : `https://oscarmulume.github.io/` répond HTTP 200 et sert bien le portfolio reconstruit.
 - Une capture mobile sombre avait varié une fois de 269 px avant stabilisation à l’étape 1 ; la capture attend désormais une hauteur de page stable avant la prise de vue. Relance : 6/6 à 0,000 %.
 
 ## Reste à faire
