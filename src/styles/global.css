@@ -12,6 +12,15 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 @custom-variant hc (&:where([data-theme=high-contrast], [data-theme=high-contrast] *));
 
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/inter-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* ─── Reset & Root ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -610,7 +619,7 @@ body::after {
 }
 
 .about-copy em {
-  color: var(--blue-br);
+  color: var(--blue-text);
   font-style: normal;
   font-weight: 700;
 }
@@ -854,13 +863,13 @@ body::after {
 
 .tl-badge.now {
   background: var(--blue-g);
-  color: var(--blue-br);
+  color: var(--blue-text);
   border-color: var(--blue-border);
 }
 
 .tl-company {
   font-size: 0.875rem;
-  color: var(--blue-br);
+  color: var(--blue-text);
   font-weight: 600;
   margin-bottom: 12px;
 }
@@ -915,7 +924,7 @@ body::after {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--blue-br);
+  color: var(--blue-text);
   margin-bottom: 16px;
 }
 
@@ -939,7 +948,7 @@ body::after {
 .skill-tag:hover {
   background: var(--blue-g);
   border-color: var(--blue-border);
-  color: var(--blue-br);
+  color: var(--blue-text);
   transform: translateY(-2px);
 }
 
@@ -1038,7 +1047,7 @@ body::after {
 
 .cv-role {
   font-size: 0.875rem;
-  color: var(--blue-br);
+  color: var(--blue-text);
   font-weight: 600;
 }
 
@@ -1219,7 +1228,7 @@ body::after {
   border: 1px solid var(--blue-border);
 }
 
-.zone-card h4 {
+.zone-card h3 {
   font-size: 0.875rem;
   font-weight: 700;
   margin-bottom: 8px;
@@ -1438,7 +1447,7 @@ html.has-cursor.cursor-hover .cursor-ring {
   border-radius: 100px;
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--blue-br);
+  color: var(--blue-text);
   background: var(--blue-g);
   border: 1px solid var(--blue-border);
   transition: all 0.35s var(--spring);
@@ -1467,7 +1476,7 @@ html.has-cursor.cursor-hover .cursor-ring {
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.03em;
-  color: var(--blue-br);
+  color: var(--blue-text);
   background: var(--blue-g);
   border: 1px solid var(--blue-border);
 }
@@ -1545,7 +1554,7 @@ html.has-cursor.cursor-hover .cursor-ring {
   gap: 6px;
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--blue-br);
+  color: var(--blue-text);
 }
 .badge-link:hover { text-decoration: underline; }
 .badge-others {
@@ -1583,7 +1592,7 @@ html.has-cursor.cursor-hover .cursor-ring {
   border-bottom: none;
 }
 .badge-others a { color: inherit; }
-.badge-others a:hover { color: var(--blue-br); text-decoration: underline; }
+.badge-others a:hover { color: var(--blue-text); text-decoration: underline; }
 .badge-others time { color: var(--text3); }
 
 @media (max-width: 900px) {

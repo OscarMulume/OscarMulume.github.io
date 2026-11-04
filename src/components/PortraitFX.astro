@@ -16,7 +16,11 @@ const { portrait } = Astro.props;
     <div class="pfx-ring" aria-hidden="true"></div>
     <div class="pfx-frame">
       <picture>
-        <source srcset="/portrait.webp" type="image/webp" />
+        <source
+          srcset="/portrait-360.webp 360w, /portrait-540.webp 540w, /portrait-720.webp 720w"
+          sizes="(max-width: 768px) 78vw, 420px"
+          type="image/webp"
+        />
         <img
           class="pfx-img"
           id="pfxImg"

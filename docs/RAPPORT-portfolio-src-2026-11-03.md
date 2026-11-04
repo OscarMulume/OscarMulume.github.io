@@ -1,6 +1,6 @@
 ﻿# Rapport — reconstruction des sources du portfolio
 
-- Date : 2026-11-03 (reprise de l’étape 2 le 2026-11-04)
+- Date : 2026-11-03 (reprise des étapes 2 à 4 le 2026-11-04)
 - Dépôt : `C:\pos-system\repos\OscarMulume.github.io`
 - Branche : `main`
 - Site : https://oscarmulume.github.io
@@ -19,6 +19,7 @@ La refonte compilée antérieure reste sauvegardée sur la branche `archive/comp
 | 1 — Filet de sécurité, captures de référence et build reproductible | `AGENTS.md`, `astro.config.mjs`, `src/styles/global.css`, `package.json`, `package-lock.json`, `.npmrc`, `.gitignore`, `tests/visual/*`, ce rapport | `npm run build` OK ; 6 captures ; comparaison visuelle 6/6 à 0,000 % | `5d31013` | `portfolio-src-step-1` | oui |
 | 2 — Reconstruction des sources Astro | 28 fichiers : `src/pages/index.astro`, `src/layouts/BaseLayout.astro`, `src/components/*.astro`, `src/data/profile.json`, `src/styles/*.css`, `public/*`, `.github/workflows/deploy.yml`, suppression des artefacts compilés de la racine, ce rapport | `npm run build` OK ; `npm run check` 0 erreur ; `npm run validate:html` OK ; comparaison visuelle 6/6 à 0,000 % | `36dbf77` | `portfolio-src-step-2` | oui |
 | 3 — Contenu vérifiable : badges Cisco, projets réels, lien M-SEC | `src/data/profile.json`, `src/components/Credentials.astro` (nouveau), `Skills.astro`, `Projects.astro`, `Hero.astro`, `Nav.astro`, `src/layouts/BaseLayout.astro`, `src/pages/index.astro`, `src/styles/global.css`, `public/media/badges/*.webp`, ce rapport | `npm run build` OK ; `npm run check` 0 erreur ; `npm run validate:html` OK ; liens externes HTTP 200 ; badges chargés en 300×300 ; aucun débordement horizontal à 390 px | `592ecbb` | `portfolio-src-step-3` | oui |
+| 4 — Qualité : liens, badges, Lighthouse, polices et images | `scripts/check-links.mjs`, `scripts/check-credentials.mjs`, `astro.config.mjs`, `Contact.astro`, `PortraitFX.astro`, `BaseLayout.astro`, `src/styles/global.css`, `src/styles/themes.css`, `public/fonts/*`, `public/portrait-{360,540,720}.webp`, ce rapport | `npm test` OK ; Lighthouse mobile 99 performance / 100 accessibilité ; liens externes et Credly vérifiés ; images de badges en 300×300 | à venir | `portfolio-src-step-4` et `portfolio-src` | à venir |
 
 ## Étape 1 — détails
 
@@ -55,11 +56,24 @@ La refonte compilée antérieure reste sauvegardée sur la branche `archive/comp
 - JSON-LD `Person` ajouté dans `BaseLayout.astro` : `worksFor` M-SEC, `hasCredential` avec les cinq `EducationalOccupationalCredential`, `sameAs` reprenant les liens externes du profil et Credly. Un seul bloc `application/ld+json`.
 - La comparaison pixel à pixel de l’étape 2 n’est plus applicable : l’étape 3 modifie volontairement le contenu et la hauteur des pages. Elle est remplacée par des contrôles de mise en page à 390, 768 et 1440 px (aucun débordement horizontal, images chargées en 300×300, navigation M-SEC masquée en mobile et visible en desktop).
 
+## Étape 4 — détails
+
+- `scripts/check-links.mjs` : vérifie les liens internes contre `dist/`, puis les liens externes (redirections suivies, délai maximal de 20 s, six requêtes en parallèle). Les origines seules (`preconnect`) sont ignorées. Un statut `999` de LinkedIn est traité comme un avertissement anti-bot, pas comme un lien cassé.
+- `scripts/check-credentials.mjs` : vérifie les cinq badges, leurs dates, leurs URL Credly (HTTP 200), la présence des images dans `dist/media/badges/`, les attributs `width`/`height` et le JSON-LD `hasCredential`.
+- `npm test` enchaîne désormais build, `astro check`, `html-validate`, vérification des liens et vérification des badges : tout passe.
+- Lighthouse mobile initial : 85 performance / 89 accessibilité. Corrections apportées : police Inter auto-hébergée (`public/fonts/inter-latin.woff2`, 48 Ko) avec `preload` et suppression des requêtes Google Fonts ; CSS critique intégré au HTML (`inlineStylesheets: 'always'`) ; portrait responsive en 360, 540 et 720 px ; contrastes des textes secondaires et des accents renforcés ; champs de formulaire associés à leurs libellés ; titre `h4` du bloc contact remplacé par `h3`.
+- Lighthouse mobile final : 99 performance / 100 accessibilité, FCP 1,3 s, LCP 2,0 s, TBT 20 ms, CLS 0, Speed Index 2,0 s. Les points consultatifs restants (b-cache, reflow forcé, image 720 px sur DPR élevé) n’empêchent pas les seuils.
+- La police Inter est bien chargée localement (`document.fonts.check('16px Inter')` = vrai) ; le portrait choisit 360, 540 ou 720 px selon le viewport ; aucun débordement horizontal à 390, 768 et 1440 px.
+
 ## Vérifications
 
 - `npm run build` : OK.
 - `npm run check` : 0 erreur, 0 avertissement, 0 indication.
 - `npm run validate:html` : OK.
+- `npm test` : OK de bout en bout (build, check, html-validate, check:links, check:credentials).
+- `npm run check:links` : 10 liens internes, 6 liens externes ; LinkedIn renvoie 999 (anti-bot) et est signalé en avertissement ; tous les autres liens répondent.
+- `npm run check:credentials` : 5 badges, 3 URL Credly en HTTP 200, images et JSON-LD cohérents.
+- Lighthouse mobile : performance 99, accessibilité 100, FCP 1,3 s, LCP 2,0 s, TBT 20 ms, CLS 0.
 - Captures étape 1/2 : 390, 768 et 1440 px, thèmes clair et sombre ; comparaison 6/6 à 0,000 % conservée pour l’étape 2.
 - Liens externes vérifiés HTTP 200 : profil Credly, badge Ethical Hacker, badge Junior Cybersecurity Analyst, Malaika Ranch, site M-SEC.
 - Étape 3 : `dist/index.html` contient `hasCredential`, `EducationalOccupationalCredential`, « Ethical Hacker », « Malaika Ranch », « POS Pro », « M-SEC Technology Consulting », `media/badges` et « Badges Cisco Networking Academy » ; un seul script JSON-LD.
@@ -71,8 +85,7 @@ La refonte compilée antérieure reste sauvegardée sur la branche `archive/comp
 
 ## Reste à faire
 
-- Étape 4 : créer `scripts/check-links.mjs` et `scripts/check-credentials.mjs` référencés par `package.json`, vérifier les liens (Credly doit répondre 200), Lighthouse mobile performance et accessibilité ≥ 95, confirmer les images WebP avec `width`/`height`.
-- Finaliser le rapport de l’étape 4, créer le tag final `portfolio-src`, pousser et vérifier le déploiement GitHub Pages ainsi que l’affichage des badges après cache (~10 min).
+- Pousser le commit de l’étape 4, créer les tags `portfolio-src-step-4` et `portfolio-src`, vérifier le workflow GitHub Pages et l’affichage en ligne des badges après cache (~10 min).
 
 ## Questions pour Oscar
 

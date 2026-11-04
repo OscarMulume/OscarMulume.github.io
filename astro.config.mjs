@@ -5,7 +5,7 @@ export default defineConfig({
   site: 'https://oscarmulume.github.io',
   output: 'static',
   build: {
-    inlineStylesheets: 'auto',
+    inlineStylesheets: 'always',
   },
   vite: {
     plugins: [tailwindcss()],
