@@ -1,0 +1,42 @@
+---
+import Icon from './Icon.astro';
+import profile from '../data/profile.json';
+
+const { cv } = profile.sections;
+---
+
+<section id="cv" class="section">
+  <div class="section-inner">
+    <div class="section-header reveal section-header-center">
+      <div class="section-label">{cv.label}</div>
+      <h2 class="section-title">{cv.title}</h2>
+    </div>
+    <div class="cv-card reveal">
+      <div class="cv-top">
+        <img class="cv-avatar cv-photo" src={cv.avatar.src} alt={cv.avatar.alt} width={cv.avatar.width} height={cv.avatar.height} loading="lazy" />
+        <div>
+          <div class="cv-name">{cv.name}</div>
+          <div class="cv-role">{cv.role}</div>
+          <div class="cv-loc">{cv.location}</div>
+        </div>
+      </div>
+      <div class="cv-grid">
+        {cv.fields.map((field) => (
+          <div>
+            <div class="cv-field-label">{field.label}</div>
+            <div class="cv-field-val">{field.value}</div>
+          </div>
+        ))}
+      </div>
+      <div class="cv-actions">
+        {cv.actions.map((action) => (
+          <a href={action.href} target="_blank" class={action.style === 'primary' ? 'btn-p' : 'btn-s'}>
+            {action.icon && <Icon name={action.icon} width={16} height={16} />}
+            {action.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+

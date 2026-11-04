@@ -1,15 +1,15 @@
 ---
 import '../styles/global.css';
 import '../styles/themes.css';
+import profile from '../data/profile.json';
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-const DEFAULT_TITLE = 'Oscar Mulume Izuba | Infrastructure IT, Réseaux & Cybersécurité';
-const DEFAULT_DESCRIPTION =
-  'IT Consultant, Network Architect et Cybersecurity Analyst basé à Kinshasa, RDC. Architecture réseau, cybersécurité offensive, développement IA. SLA 99.9%, réponse incidents en 2h.';
+const DEFAULT_TITLE = profile.site.title;
+const DEFAULT_DESCRIPTION = profile.site.description;
 
 const {
   title = DEFAULT_TITLE,
@@ -18,15 +18,15 @@ const {
 ---
 
 <!DOCTYPE html>
-<html lang="fr" data-theme="light">
+<html lang={profile.site.lang} data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f8f9fc" />
-    <meta property="og:title" content="Oscar Mulume — IT/Network Architect & Cybersecurity Analyst" />
-    <meta property="og:description" content="Architecture réseau, cybersécurité offensive, développement IA. SLA 99.9%, réponse incidents en 2h. Kinshasa, RDC — Afrique Centrale." />
+    <meta name="theme-color" content={profile.site.themeColor} />
+    <meta property="og:title" content={profile.site.ogTitle} />
+    <meta property="og:description" content={profile.site.ogDescription} />
     <meta property="og:type" content="website" />
     <meta name="color-scheme" content="light dark" />
 
@@ -64,7 +64,7 @@ const {
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   </head>
   <body data-current-theme="light">
-    <a class="skip-link" href="#main">Aller au contenu</a>
+    <a class="skip-link" href="#main">{profile.site.skipLink}</a>
     <slot />
   </body>
 </html>

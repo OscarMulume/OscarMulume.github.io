@@ -1,0 +1,27 @@
+---
+import Icon from './Icon.astro';
+import profile from '../data/profile.json';
+
+const { services } = profile.sections;
+---
+
+<section id="services" class="section">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-label">{services.label}</div>
+      <h2 class="section-title">{services.title}</h2>
+      <p class="section-desc">{services.description}</p>
+    </div>
+    <div class="bento-grid">
+      {services.items.map((service, index) => (
+        <div class={`bento-card reveal reveal-delay-${Math.min(index + 1, 5)}`}>
+          <div class="card-icon">
+            <Icon name={service.icon} />
+          </div>
+          <h3>{service.title}</h3>
+          <p>{service.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

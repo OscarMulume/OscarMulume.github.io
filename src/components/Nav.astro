@@ -1,0 +1,29 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import Icon from './Icon.astro';
+import profile from '../data/profile.json';
+---
+
+<nav class="nav" id="nav">
+  <div class="nav-pill">
+    <a href="/" class="logo">{profile.site.brand.firstName}<span>{profile.site.brand.lastName}</span></a>
+    <div class="nav-links">
+      {profile.nav.links.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </div>
+    <div class="nav-actions">
+      <ThemeToggle />
+      <a href={profile.nav.cta.href} class="nav-cta nav-cta-desktop">{profile.nav.cta.label}</a>
+      <button type="button" class="mob-btn" id="mobBtn" aria-label={profile.nav.menuLabel}>
+        <Icon name="menu" width={20} height={20} />
+      </button>
+    </div>
+  </div>
+  <div class="mob-menu" id="mobMenu">
+    {profile.nav.links.map((link) => (
+      <a href={link.href}>{link.label}</a>
+    ))}
+  </div>
+</nav>
+

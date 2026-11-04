@@ -1,0 +1,86 @@
+---
+import Icon from './Icon.astro';
+import profile from '../data/profile.json';
+
+const { contact } = profile.sections;
+const { form } = contact;
+const fullFields = form.fields.filter((field) => field.full);
+const rowFields = form.fields.filter((field) => !field.full);
+const inputType = (type: string) => type as 'text' | 'email' | 'tel';
+---
+
+<section id="contact" class="section">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-label">{contact.label}</div>
+      <h2 class="section-title">{contact.title}</h2>
+      <p class="section-desc">{contact.description}</p>
+    </div>
+    <div class="contact-grid">
+      <form class="contact-form reveal" action={form.action} method={form.method}>
+        {fullFields.map((field) => (
+          <div class="form-group">
+            <label>{field.label}</label>
+            <input type={inputType(field.type)} name={field.name} required={field.required} placeholder={field.placeholder} />
+          </div>
+        ))}
+        <div class="form-row">
+          {rowFields.map((field) => (
+            <div class="form-group">
+              <label>{field.label}</label>
+              <input type={inputType(field.type)} name={field.name} required={field.required} placeholder={field.placeholder} />
+            </div>
+          ))}
+        </div>
+        <div class="form-group">
+          <label>{form.service.label}</label>
+          <select name={form.service.name}>
+            <option>{form.service.placeholder}</option>
+            {form.service.options.map((option) => (
+              <option value={option.value}>{option.label}</option>
+            ))}
+          </select>
+        </div>
+        <div class="form-group">
+          <label>{form.message.label}</label>
+          <textarea name={form.message.name} required={form.message.required} placeholder={form.message.placeholder}></textarea>
+        </div>
+        <button type="submit" class="btn-p btn-full">
+          {form.submit}
+          <Icon name="download" width={16} height={16} />
+        </button>
+      </form>
+      <div class="contact-info reveal reveal-delay-2">
+        {contact.cards.map((card) => (
+          <div class="ci-card">
+            <div class="ci-icon">
+              <Icon name={card.icon} width={20} height={20} />
+            </div>
+            <div>
+              <div class="ci-label">{card.label}</div>
+              <div class="ci-val">
+                {card.href ? (
+                  <a href={card.href} target={card.external ? '_blank' : undefined} rel={card.external ? 'noopener noreferrer' : undefined}>{card.value}</a>
+                ) : (
+                  card.value
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+        <div class="zone-card">
+          <h4>{contact.zone.title}</h4>
+          <p>
+            {contact.zone.lines.map((line, index) => (
+              <>{line}{index < contact.zone.lines.length - 1 && <br />}</>
+            ))}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+

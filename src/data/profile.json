@@ -1,0 +1,442 @@
+{
+  "site": {
+    "url": "https://oscarmulume.github.io",
+    "lang": "fr",
+    "title": "Oscar Mulume Izuba | Infrastructure IT, Réseaux & Cybersécurité",
+    "description": "IT Consultant, Network Architect et Cybersecurity Analyst basé à Kinshasa, RDC. Architecture réseau, cybersécurité offensive, développement IA. SLA 99.9%, réponse incidents en 2h.",
+    "ogTitle": "Oscar Mulume — IT/Network Architect & Cybersecurity Analyst",
+    "ogDescription": "Architecture réseau, cybersécurité offensive, développement IA. SLA 99.9%, réponse incidents en 2h. Kinshasa, RDC — Afrique Centrale.",
+    "themeColor": "#f8f9fc",
+    "skipLink": "Aller au contenu",
+    "brand": {
+      "firstName": "Oscar",
+      "lastName": "Mulume",
+      "fullName": "Oscar Mulume",
+      "legalName": "MULUME IZUBA OSCAR"
+    },
+    "copyright": "Oscar Mulume. Tous droits réservés.",
+    "location": "Kinshasa, RDC — Afrique Centrale"
+  },
+  "theme": {
+    "storageKey": "msec-theme",
+    "labels": {
+      "light": "Activer le mode clair",
+      "dark": "Activer le mode sombre (Lumière Basse)",
+      "highContrast": "Activer le mode contraste élevé"
+    },
+    "title": "Changer de thème (Clair / Sombre doux / Contraste élevé)",
+    "colors": {
+      "light": "#f8f9fc",
+      "dark": "#0c0d14",
+      "highContrast": "#000000"
+    }
+  },
+  "nav": {
+    "links": [
+      { "label": "À propos", "href": "#apropos" },
+      { "label": "Services", "href": "#services" },
+      { "label": "Expériences", "href": "#experiences" },
+      { "label": "Projets", "href": "#projets" },
+      { "label": "Compétences", "href": "#competences" },
+      { "label": "Contact", "href": "#contact" }
+    ],
+    "cta": { "label": "Me contacter", "href": "#contact" },
+    "menuLabel": "Menu"
+  },
+  "hero": {
+    "availability": "Disponible — Afrique Centrale",
+    "firstName": "Oscar",
+    "lastName": "Mulume",
+    "role": "Infrastructure IT · Réseaux · Cybersécurité · Développement",
+    "description": "J'architecte, déploie et sécurise les infrastructures critiques d'entreprises en Afrique Centrale. De la fibre optique à la cybersécurité offensive, en passant par l'intégration d'IA — je conçois des systèmes pensés pour rester disponibles.",
+    "primaryCta": { "label": "Découvrir mes services", "href": "#services" },
+    "secondaryCta": { "label": "Devis gratuit", "href": "#contact" },
+    "location": "📍 Kinshasa, RDC — Interventions en Afrique Centrale & Remote",
+    "stats": [
+      { "value": "2021", "label": "En IT depuis" },
+      { "value": "5", "label": "Entités sécurisées chez Malaïka" },
+      { "value": "10+", "label": "Certifications vérifiables" },
+      { "value": "99,9 %", "label": "SLA maintenu" }
+    ],
+    "portrait": {
+      "alt": "Portrait d'Oscar Mulume Izuba",
+      "chips": [
+        { "className": "chip-a", "text": "Cisco · Junior Cybersecurity Analyst", "dot": true },
+        { "className": "chip-b", "text": "SLA 99,9 %", "dot": false },
+        { "className": "chip-c", "text": "Hack The Box · Niv. 25", "dot": false }
+      ],
+      "hint": "Passez la souris sur le portrait"
+    }
+  },
+  "sections": {
+    "about": {
+      "label": "Profil",
+      "title": "L'ingénieur que les entreprises appellent quand tout doit fonctionner",
+      "description": "Un profil hybride : ingénierie réseau, Cybersécurité, Développement Full-Stack et IA.",
+      "paragraphs": [
+        "Je suis Oscar Mulume — un profil hybride qui combine <strong>architecture réseau d'entreprise</strong>, <strong>cybersécurité offensive</strong> et <strong>développement full-stack assisté par IA</strong>. Depuis Goma jusqu'à Kinshasa, j'ai construit ma réputation sur un principe simple : <em>zéro tolérance pour l'indisponibilité</em>.",
+        "Chez Malaïka Group, j'ai sécurisé 5+ sites web après une cyberattaque, maintenu un uptime Internet de 99% et garanti un SLA de 99.9% pour les services Wi-Fi et PMS. Ma méthode : auditer sans relâche, durcir sans compromis, monitorer sans interruption.",
+        "Mon double profil — <strong>infrastructure terrain</strong> (fibre FTTH, Cisco, CCTV) et <strong>développement logiciel</strong> (Flutter, Python, AWS Bedrock) — me permet de comprendre une stack technique de bout en bout, du câble physique jusqu'au modèle d'IA en production."
+      ]
+    },
+    "services": {
+      "label": "Solutions IT",
+      "title": "Services",
+      "description": "Des solutions complètes pour connecter, sécuriser, développer et maintenir vos infrastructures critiques.",
+      "items": [
+        {
+          "icon": "network",
+          "title": "Architecture Réseau & Infrastructure",
+          "description": "Conception et déploiement d'infrastructures réseau entreprise haute disponibilité. Fibre FTTH, Starlink Business, antennes PtP/PtMP, Wi-Fi entreprise multi-sites. Chaque lien, chaque switch, chaque VLAN est dimensionné pour la performance et la résilience."
+        },
+        {
+          "icon": "shield",
+          "title": "Cybersécurité & Audits",
+          "description": "Audit de vulnérabilités, durcissement systèmes et applications, pare-feu/IDS, plan de reprise d'activité (DRP/BCP). Réponse aux incidents en moins de 2 heures. Protéger votre entreprise n'est pas une option — c'est ma mission."
+        },
+        {
+          "icon": "camera",
+          "title": "CCTV & Vidéosurveillance IP",
+          "description": "Déploiement de systèmes de vidéosurveillance professionnels : caméras HD/4K, NVR, accès distant sécurisé, maintenance préventive. Uptime garanti à 95%+ sur l'ensemble du parc caméras."
+        },
+        {
+          "icon": "grid",
+          "title": "Câblage Structuré & Certification",
+          "description": "Infrastructure cuivre Cat6/Cat6a et fibre monomode aux normes internationales. Baies de brassage, testing et certification. Du schéma de câblage à la livraison documentée — chaque prise est certifiée."
+        },
+        {
+          "icon": "user",
+          "title": "Déploiement Cisco & UniFi",
+          "description": "Routeurs, switches managés, PA Wi-Fi Cisco/UniFi. Configuration VLAN, VPN site-à-site, ACL, QoS. Optimisation des performances réseau pour des environnements exigeants."
+        },
+        {
+          "icon": "settings",
+          "title": "Développement & Intégration IA",
+          "description": "Applications mobiles (Flutter/Dart), intégration paiements (M-Pesa, Orange Money, Flutterwave), backends Supabase/PostgreSQL, et solutions IA générative via AWS Bedrock. Quand l'infrastructure rencontre le code."
+        }
+      ]
+    },
+    "process": {
+      "label": "Méthodologie",
+      "title": "Comment on travaille",
+      "steps": [
+        {
+          "title": "Audit & Diagnostic",
+          "description": "Analyse complète de votre infrastructure. Identification des vulnérabilités, goulots d'étranglement et risques critiques."
+        },
+        {
+          "title": "Architecture & Devis",
+          "description": "Conception technique détaillée, chiffrage transparent, planning de déploiement réaliste. Pas de surprises."
+        },
+        {
+          "title": "Déploiement & Tests",
+          "description": "Installation professionnelle, configuration, tests de performance, documentation technique, mise en service validée."
+        },
+        {
+          "title": "Maintenance & SLA",
+          "description": "Monitoring 24/7, maintenance préventive, rapports mensuels, helpdesk avec réponse garantie en 2h."
+        }
+      ]
+    },
+    "experience": {
+      "label": "Carrière",
+      "title": "Expérience Professionnelle",
+      "items": [
+        {
+          "title": "Responsable IT, Ingénierie & Technologies (Consultant IT)",
+          "period": "● Févr. 2026 – Présent",
+          "current": true,
+          "company": "Malaïka Group — Kinshasa, RDC",
+          "bullets": [
+            "Pilotage de l'IT, de la cybersécurité et de l'ingénierie de 5 entités (Malaïka Group, Ranch, Travels, Le Gabriel, Chez Malaïka)",
+            "Entré comme technicien réseau pour un audit d'urgence : pannes critiques rétablies, contrat groupe obtenu en un mois",
+            "Durcissement des plateformes web après une cyberattaque majeure : scans de vulnérabilités, correctifs, pare-feu, antivirus",
+            "Disponibilité de 99,9 % (Wi-Fi, PMS, contrôle d'accès), 99,5 % (POS), 99 % (Internet) ; incidents critiques traités en moins de 2 h",
+            "Plan de reprise après sinistre (DRP) et sauvegardes testés ; rapports mensuels à la direction"
+          ]
+        },
+        {
+          "title": "Fondateur & Consultant principal",
+          "period": "● Mai 2026 – Présent",
+          "current": true,
+          "company": "M-Sec Technology Consulting — Kinshasa, RDC",
+          "bullets": [
+            "Évaluations de vulnérabilités, durcissement de systèmes et conseil en sécurité",
+            "Applications web et mobiles sur mesure (Flutter/Dart, Supabase) avec paiement mobile"
+          ]
+        },
+        {
+          "title": "Responsable IT & Opérations",
+          "period": "Oct. 2024 – Mai 2025",
+          "current": false,
+          "company": "ALOM Services — Goma, RDC",
+          "bullets": [
+            "Lancement technique et opérationnel d'une start-up d'impression numérique et de services IT, du budget au déploiement",
+            "Achat du matériel, installation du réseau local, des postes et des imprimantes industrielles",
+            "Mise en place d'un cybercafé et d'un centre de formation ; recrutement des premiers techniciens"
+          ]
+        },
+        {
+          "title": "Informaticien (mission terrain)",
+          "period": "Août 2024",
+          "current": false,
+          "company": "Genocost — Goma, RDC",
+          "bullets": [
+            "Infrastructure IT temporaire et support pour la commémoration nationale ; communications d'urgence"
+          ]
+        },
+        {
+          "title": "Technicien déploiement réseau (contrat)",
+          "period": "Sept. 2022",
+          "current": false,
+          "company": "Canalbox / Group Vivendi Africa — Goma, RDC",
+          "bullets": [
+            "Câblage structuré du nouveau bureau de Goma, montage des baies et panneaux de brassage"
+          ]
+        },
+        {
+          "title": "Assistant informaticien",
+          "period": "2021",
+          "current": false,
+          "company": "Hima Cement / LafargeHolcim — Goma, RDC",
+          "bullets": [
+            "Support de niveau 1, outils mobiles de collecte de données (KoboCollect), gestion du parc"
+          ]
+        },
+        {
+          "title": "Secouriste bénévole & assistant magasinier",
+          "period": "Avr. 2022 – Déc. 2024",
+          "current": false,
+          "company": "Croix-Rouge RDC",
+          "bullets": [
+            "Gestion de dépôt, inventaires et logistique d'opérations humanitaires"
+          ]
+        }
+      ]
+    },
+    "projects": {
+      "label": "Preuves",
+      "title": "Projets & pratique en cybersécurité",
+      "description": "Des réalisations concrètes et vérifiables, en développement comme en sécurité offensive et défensive.",
+      "items": [
+        {
+          "tag": "Développement",
+          "title": "herbo",
+          "description": "Application web en Next.js et TypeScript sur Supabase (PostgreSQL), avec tests de bout en bout Playwright et intégration continue.",
+          "href": "https://github.com/OscarMulume",
+          "linkLabel": "Voir sur GitHub →"
+        },
+        {
+          "tag": "Pentest · Hack The Box",
+          "title": "Machines Cohort & Orion",
+          "description": "Cohort : SSRF, accès initial puis élévation de privilèges via CVE. Orion : énumération web CraftCMS et contournement d'authentification Telnet local."
+        },
+        {
+          "tag": "DFIR · Blue Team",
+          "title": "Sherlocks Brutus & Investigate Web Attack",
+          "description": "Reconstitution de kill chains à partir de logs : brute force SSH (auth.log, wtmp, MITRE T1136), scan Nikto, brute force web et injection de commandes."
+        },
+        {
+          "tag": "Formation continue",
+          "title": "HTB Academy · Niveau 25",
+          "description": "Parcours « Cracking into Hack The Box » terminé, plus de 10 modules (Nmap, SQL Injection, Linux, Web Requests). CTF AAR Cyber, Octobre Cyber 2026."
+        },
+        {
+          "tag": "Infrastructure",
+          "title": "Cloud privé Raspberry Pi",
+          "description": "Serveur de stockage personnel sur Raspberry Pi 5 avec Nextcloud, accessible à distance de façon sécurisée via Tailscale."
+        },
+        {
+          "tag": "Réseau · Sécurité",
+          "title": "Formation pfSense",
+          "description": "Supports pour apprendre à configurer et administrer pfSense, pare-feu et routeur open source."
+        }
+      ]
+    },
+    "skills": {
+      "label": "Savoir-faire",
+      "title": "Compétences Techniques",
+      "groups": [
+        {
+          "title": "Réseau & Sécurité",
+          "tags": ["Cisco IOS", "Fibre FTTH", "Starlink Business", "ICOM IP2AIR", "CCTV IP", "Wi-Fi Entreprise", "Vulnérabilités", "Hardening", "Firewall/IDS", "DRP/BCP"]
+        },
+        {
+          "title": "Développement & Data",
+          "tags": ["Flutter/Dart", "Python", "JavaScript", "Paiements M-Pesa", "Orange Money", "Flutterwave", "SQL/MySQL", "PostgreSQL", "MongoDB", "Supabase"]
+        },
+        {
+          "title": "IA & Cloud",
+          "tags": ["AWS Bedrock", "Machine Learning", "Générative AI"]
+        },
+        {
+          "title": "Outils & Méthodes",
+          "tags": ["VS Code", "GitHub", "Cursor", "Bolt.new", "JIRA", "Trello", "KoboCollect"]
+        },
+        {
+          "title": "Langues",
+          "tags": ["🇫🇷 Français (natif/bilingue)", "🇬🇧 Anglais (pro/technique)", "🇰🇮 Swahili (pro)", "🇨🇩 Lingala (intermédiaire)"]
+        }
+      ],
+      "certificationsTitle": "Certifications",
+      "certifications": [
+        "🔒 Cisco · Junior Cybersecurity Analyst Career Path — Mars 2026",
+        "🌐 Cisco · Networking Devices and Initial Configuration — Mars 2026",
+        "🌐 Cisco · Networking Basics — Mars 2026",
+        "🌐 Cisco · CCNA: Introduction to Networks — 2022",
+        "🔒 Cisco · Introduction to Cybersecurity — 2022",
+        "🐧 NDG Linux Essentials — 2022",
+        "🐧 NDG Linux Unhatched — 2022",
+        "🤖 AWS · Fundamentals of Generative AI — Nov 2025",
+        "📡 UNHCR · RETS, télécoms d'urgence — Fév 2026",
+        "🌍 Internet Society · Grant Ready — 2026",
+        "⏳ En cours : Cisco Ethical Hacker · CCNA SRWE"
+      ]
+    },
+    "cv": {
+      "label": "Profil",
+      "title": "Mon CV",
+      "name": "MULUME IZUBA OSCAR",
+      "role": "Spécialiste Infrastructure IT, Réseaux & Cybersécurité",
+      "location": "📍 Kinshasa, RDC",
+      "avatar": {
+        "src": "/portrait.webp",
+        "alt": "Oscar Mulume Izuba",
+        "width": 80,
+        "height": 80
+      },
+      "fields": [
+        { "label": "Formation", "value": "Licence Réseaux, Télécoms & Maintenance — ISIPA 2025" },
+        { "label": "Diplôme", "value": "Diplôme Sup. Informatique — ISIG Goma (2019-2025)" },
+        { "label": "Certifications", "value": "10+ vérifiables (Cisco, AWS, UNHCR, Internet Society)" },
+        { "label": "Langues", "value": "FR / EN / SW / Lingala" }
+      ],
+      "actions": [
+        { "label": "CV en français (PDF)", "href": "/cv-oscar-mulume.pdf", "style": "primary", "icon": "download" },
+        { "label": "CV in English (PDF)", "href": "/cv-oscar-mulume-en.pdf", "style": "secondary" }
+      ]
+    },
+    "contact": {
+      "label": "Connexion",
+      "title": "Parlons de votre prochain projet",
+      "description": "Une infrastructure à sécuriser ? Un réseau à déployer ? Une application à concevoir ? Je suis disponible pour des missions en Afrique Centrale et en remote.",
+      "form": {
+        "action": "https://formspree.io/f/xpwzgkqr",
+        "method": "POST",
+        "fields": [
+          {
+            "type": "text",
+            "name": "name",
+            "label": "Nom complet",
+            "placeholder": "Votre nom",
+            "required": true,
+            "full": true
+          },
+          {
+            "type": "email",
+            "name": "email",
+            "label": "Email",
+            "placeholder": "votre@email.com",
+            "required": true,
+            "full": false
+          },
+          {
+            "type": "tel",
+            "name": "phone",
+            "label": "Téléphone",
+            "placeholder": "+243 ...",
+            "required": false,
+            "full": false
+          }
+        ],
+        "service": {
+          "label": "Service souhaité",
+          "name": "service",
+          "placeholder": "Choisir un service",
+          "options": [
+            { "value": "reseau", "label": "Architecture Réseau & Infrastructure" },
+            { "value": "cyber", "label": "Cybersécurité & Audit" },
+            { "value": "cctv", "label": "CCTV & Surveillance" },
+            { "value": "cablage", "label": "Câblage Structuré" },
+            { "value": "deploiement", "label": "Déploiement Cisco/UniFi" },
+            { "value": "dev", "label": "Développement & IA" },
+            { "value": "consulting", "label": "Consulting IT" }
+          ]
+        },
+        "message": {
+          "label": "Message",
+          "name": "message",
+          "placeholder": "Décrivez votre projet...",
+          "required": true
+        },
+        "submit": "Envoyer le message"
+      },
+      "cards": [
+        {
+          "icon": "mail",
+          "label": "Email",
+          "value": "oscarmulume1612@gmail.com",
+          "href": "mailto:oscarmulume1612@gmail.com"
+        },
+        {
+          "icon": "linkedin",
+          "label": "LinkedIn",
+          "value": "Oscar Mulume",
+          "href": "https://www.linkedin.com/in/oscar-mulume-95666b225/",
+          "external": true
+        },
+        {
+          "icon": "github",
+          "label": "GitHub",
+          "value": "@OscarMulume",
+          "href": "https://github.com/OscarMulume",
+          "external": true
+        },
+        {
+          "icon": "phone",
+          "label": "Téléphone",
+          "value": "+243 975 585 150"
+        }
+      ],
+      "zone": {
+        "title": "Zone d'intervention",
+        "lines": [
+          "🇨🇩 Kinshasa, Goma, Bukavu",
+          "🌍 Afrique Centrale",
+          "💻 Remote / Sur site"
+        ]
+      }
+    },
+    "footer": {
+      "brandDescription": "Spécialiste infrastructure IT, réseaux et cybersécurité à Kinshasa. Architecture réseau, sécurité et développement pour l'Afrique centrale.",
+      "columns": [
+        {
+          "title": "Services",
+          "links": [
+            { "label": "Architecture Réseau", "href": "#services" },
+            { "label": "Cybersécurité", "href": "#services" },
+            { "label": "CCTV", "href": "#services" },
+            { "label": "Développement & IA", "href": "#services" }
+          ]
+        },
+        {
+          "title": "Entreprise",
+          "links": [
+            { "label": "À propos", "href": "#apropos" },
+            { "label": "Expériences", "href": "#experiences" },
+            { "label": "Compétences", "href": "#competences" },
+            { "label": "CV", "href": "#cv" }
+          ]
+        },
+        {
+          "title": "Contact",
+          "links": [
+            { "label": "Email", "href": "mailto:oscarmulume1612@gmail.com" },
+            { "label": "LinkedIn", "href": "https://www.linkedin.com/in/oscar-mulume-95666b225/", "external": true },
+            { "label": "GitHub", "href": "https://github.com/OscarMulume", "external": true }
+          ]
+        }
+      ]
+    }
+  }
+}

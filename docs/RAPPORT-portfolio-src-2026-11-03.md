@@ -1,50 +1,64 @@
-﻿# Rapport â€” reconstruction des sources du portfolio
+﻿# Rapport — reconstruction des sources du portfolio
 
-- Date : 2026-11-03
-- DÃ©pÃ´t : `C:\pos-system\repos\OscarMulume.github.io`
+- Date : 2026-11-03 (reprise de l’étape 2 le 2026-11-04)
+- Dépôt : `C:\pos-system\repos\OscarMulume.github.io`
 - Branche : `main`
 - Site : https://oscarmulume.github.io
+- Rôle : lead engineer M-SEC
 
 ## Contexte
 
-La branche `main` distante a avancÃ© depuis le constat initial : `origin/main` pointe dÃ©sormais sur `51fc0cf` (Â« deploy: mise en ligne de la refonte (portrait particules, projets, CV FR/EN) Ã  la racine Â»). Cette version contient dÃ©jÃ  des sources Astro, les thÃ¨mes clair / sombre / contraste Ã©levÃ©, le portrait en particules, les projets et les CV FR/EN.
+La branche `main` distante a avancé depuis le constat initial : `origin/main` pointait sur `51fc0cf` (« deploy: mise en ligne de la refonte (portrait particules, projets, CV FR/EN) à la racine »). Cette version contenait déjà des sources Astro, les thèmes clair / sombre / contraste élevé, le portrait en particules, les projets et les CV FR/EN.
 
-La refonte compilÃ©e antÃ©rieure reste sauvegardÃ©e sur la branche `archive/compiled-2026-09-02` (`139ca82`). Aucun Ã©lÃ©ment de la refonte actuelle nâ€™a Ã©tÃ© Ã©crasÃ©.
+La refonte compilée antérieure reste sauvegardée sur la branche `archive/compiled-2026-09-02` (`139ca82`). Aucun élément de la refonte actuelle n’a été écrasé.
 
-## Ã‰tapes
+## Étapes
 
-| Ã‰tape | Fichiers | Tests | Commit | Tag | PoussÃ© |
+| Étape | Fichiers | Tests | Commit | Tag | Poussé |
 |---|---|---|---|---|---|
-| 1 â€” Filet de sÃ©curitÃ©, captures de rÃ©fÃ©rence et build reproductible | `AGENTS.md`, `astro.config.mjs`, `src/styles/global.css`, `package.json`, `package-lock.json`, `.npmrc`, `.gitignore`, `tests/visual/*`, ce rapport | `npm run build` OK ; 6 captures ; comparaison visuelle 6/6 Ã  0,000 % | `5d31013` | `portfolio-src-step-1` | oui |
+| 1 — Filet de sécurité, captures de référence et build reproductible | `AGENTS.md`, `astro.config.mjs`, `src/styles/global.css`, `package.json`, `package-lock.json`, `.npmrc`, `.gitignore`, `tests/visual/*`, ce rapport | `npm run build` OK ; 6 captures ; comparaison visuelle 6/6 à 0,000 % | `5d31013` | `portfolio-src-step-1` | oui |
+| 2 — Reconstruction des sources Astro | 27 fichiers : `src/pages/index.astro`, `src/layouts/BaseLayout.astro`, `src/components/*.astro`, `src/data/profile.json`, `src/styles/*.css`, `public/*`, `.github/workflows/deploy.yml`, suppression des artefacts compilés de la racine, ce rapport | `npm run build` OK ; `npm run check` 0 erreur ; `npm run validate:html` OK ; comparaison visuelle 6/6 à 0,000 % | `portfolio-src-step-2` (voir `git log`) | `portfolio-src-step-2` | oui |
 
-## Ã‰tape 1 â€” dÃ©tails
+## Étape 1 — détails
 
-- `AGENTS.md` copiÃ© depuis `C:\pos-system\AGENTS.md`.
-- `archive/compiled-2026-09-02` crÃ©Ã©e et poussÃ©e sur `139ca82`.
-- Captures de rÃ©fÃ©rence gÃ©nÃ©rÃ©es depuis la version compilÃ©e actuelle `51fc0cf` : `tests/visual/reference/home-{390,768,1440}-{light,dark}.png`.
-- Serveur local et capture Playwright ajoutÃ©s : `tests/visual/serve.mjs`, `tests/visual/capture.mjs`.
-- Comparaison pixel par pixel ajoutÃ©e : `tests/visual/compare.mjs` (seuil 1 %, seuil rÃ©el constatÃ© 0 %).
-- Build passÃ© Ã  Astro 7.4.5, mÃªme majeure que le site M-SEC.
-- Tailwind 4 conservÃ© via `@tailwindcss/vite`, sans Preflight : la version compilÃ©e de rÃ©fÃ©rence ne contient pas le reset Tailwind. Le Preflight ajoutait 26 px Ã  la section contact et cassait la paritÃ© visuelle.
-- `esbuild` ajoutÃ© explicitement aux dÃ©pendances de dÃ©veloppement : Vite 8 ne le fournit plus directement alors que `cssMinify: 'esbuild'` lâ€™exige.
-- `postcss.config.mjs` supprimÃ© : il rÃ©fÃ©renÃ§ait `@tailwindcss/postcss`, dÃ©sinstallÃ©.
-- `esbuild@0.28.2` ajoutÃ© aux scripts autorisÃ©s dans `.npmrc`.
+- `AGENTS.md` copié depuis `C:\pos-system\AGENTS.md`.
+- `archive/compiled-2026-09-02` créée et poussée sur `139ca82`.
+- Captures de référence générées depuis la version compilée actuelle : `tests/visual/reference/home-{390,768,1440}-{light,dark}.png`.
+- Serveur local et capture Playwright : `tests/visual/serve.mjs`, `tests/visual/capture.mjs`.
+- Comparaison pixel par pixel : `tests/visual/compare.mjs` (seuil 1 %, seuil réel constaté 0 %).
+- Build passé à Astro 7.4.x, même majeure que le site M-SEC.
+- Tailwind 4 conservé via `@tailwindcss/vite`, sans Preflight : la version compilée de référence ne contient pas le reset Tailwind. Le Preflight ajoutait 26 px à la section contact et cassait la parité visuelle.
+- `esbuild` ajouté explicitement aux dépendances de développement : Vite 8 ne le fournit plus directement alors que `cssMinify: 'esbuild'` l’exige.
+- `postcss.config.mjs` supprimé : il référençait `@tailwindcss/postcss`, désinstallé.
+- `esbuild@0.28.2` ajouté aux scripts autorisés dans `.npmrc`.
 
-## VÃ©rifications
+## Étape 2 — détails
+
+- Page découpée en composants par section : `Nav`, `Hero`, `About`, `Services`, `Process`, `Experience`, `Projects`, `Skills`, `Cv`, `Contact`, `Footer`, plus `Icon`, `PortraitFX` et `ThemeToggle`.
+- Tout le contenu visible (identité, navigation, expériences, compétences, services, certifications, projets, CV, contact, pied de page) est dans `src/data/profile.json` ; aucun texte métier n’est écrit en dur dans les composants.
+- CSS actuel repris et organisé dans `src/styles/global.css` et `src/styles/themes.css`, sans retour à l’ancien design de `17e3789`.
+- BOM UTF-8 retiré de `src/components/Contact.astro`, `Cv.astro`, `Nav.astro` et `Process.astro` (vérifié octet par octet : les quatre fichiers commencent maintenant par `2D 2D 2D`, plus aucun BOM dans `src/`).
+- Erreurs `astro check` corrigées dans `src/pages/index.astro` (types du canvas) et variable inutilisée retirée de `ThemeToggle.astro`.
+- Artefacts compilés supprimés de la racine (`index.html`, ancien CSS `_astro/`, PDF, favicons, images) ; les fichiers publics utiles sont désormais dans `public/`. `dist/` est ignoré par Git et n’est plus committé.
+- Workflow `.github/workflows/deploy.yml` ajouté : build Astro, `actions/upload-pages-artifact`, `actions/deploy-pages`, déclenché sur `main`.
+- Réglage GitHub Pages vérifié puis corrigé avant le push : l’API renvoyait `build_type: "legacy"` (branche `main` / racine) ; elle renvoie maintenant `build_type: "workflow"`. Équivalent de Settings → Pages → Source = « GitHub Actions ».
+
+## Vérifications
 
 - `npm run build` : OK.
-- Captures : 390, 768 et 1440 px, thÃ¨mes clair et sombre.
-- Comparaison visuelle : 6/6 captures Ã  0,000 % de diffÃ©rence.
-- Une capture mobile sombre a variÃ© une fois de 269 px avant stabilisation ; la capture attend dÃ©sormais une hauteur de page stable avant la prise de vue. Relance : 6/6 Ã  0,000 %.
+- `npm run check` : 0 erreur, 0 avertissement, 0 indication.
+- `npm run validate:html` : OK.
+- Captures : 390, 768 et 1440 px, thèmes clair et sombre.
+- Comparaison visuelle : 6/6 captures à 0,000 % de différence (0 pixel différent), contre une référence issue du site compilé.
+- `dist/` : 9 fichiers, 462 658 octets au total.
+- Une capture mobile sombre avait varié une fois de 269 px avant stabilisation à l’étape 1 ; la capture attend désormais une hauteur de page stable avant la prise de vue. Relance : 6/6 à 0,000 %.
 
-## Reste Ã  faire
+## Reste à faire
 
-- Ã‰tape 2 : extraire tout le contenu dans `src/data/profile.json`, dÃ©couper la page en composants, conserver la paritÃ© visuelle, supprimer les artefacts compilÃ©s de la racine et ajouter le workflow GitHub Pages.
-- Ã‰tape 3 : badges Cisco vÃ©rifiables, projets rÃ©els, lien M-SEC, JSON-LD `hasCredential`.
-- Ã‰tape 4 : `html-validate`, vÃ©rification des liens, Lighthouse mobile â‰¥ 95, images WebP dimensionnÃ©es.
-- VÃ©rifier le dÃ©ploiement GitHub Pages et lâ€™affichage des badges aprÃ¨s cache (~10 min).
+- Étape 3 : badges Cisco vérifiables, projets réels (POS Pro, Malaika Ranch, site M-SEC), lien visible vers M-SEC, JSON-LD `hasCredential`, images de badges.
+- Étape 4 : `html-validate` (déjà OK à ce stade), vérification des liens (Credly doit répondre 200), Lighthouse mobile performance et accessibilité ≥ 95, images WebP avec `width`/`height`.
+- Vérifier le déploiement GitHub Pages et l’affichage des badges après cache (~10 min).
 
 ## Questions pour Oscar
 
-- Aucune question bloquante Ã  ce stade.
-
+- Aucune question bloquante à ce stade.

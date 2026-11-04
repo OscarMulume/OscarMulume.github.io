@@ -1,11 +1,11 @@
 ---
-// ─── ThemeToggle.astro ───
-// Navigue entre 3 modes : light, dark (Lumière Basse), high-contrast
-// Persistance : localStorage + détection prefers-color-scheme
-// Le script inline s'exécute avant le paint (FOUC prevention)
+import profile from '../data/profile.json';
+
+const labels = JSON.stringify(profile.theme.labels);
 ---
+
 <script>
-  const ThemeToggle = (() => {
+  (() => {
     const STORAGE_KEY = 'msec-theme';
     const THEMES = ['light', 'dark', 'high-contrast'] as const;
     type Theme = (typeof THEMES)[number];
@@ -68,13 +68,12 @@
     }
 
     function updateButtonLabels(theme: Theme) {
-      const labels: Record<Theme, string> = {
-        light: 'Activer le mode clair',
-        dark: 'Activer le mode sombre (Lumière Basse)',
-        'high-contrast': 'Activer le mode contraste élevé',
-      };
       document.querySelectorAll<HTMLElement>('[data-theme-toggle]').forEach((btn) => {
-        btn.setAttribute('aria-label', labels[theme]);
+        const raw = btn.getAttribute('data-labels');
+        if (!raw) return;
+        const labels: Record<string, string> = JSON.parse(raw);
+        const key = theme === 'high-contrast' ? 'highContrast' : theme;
+        btn.setAttribute('aria-label', labels[key] ?? '');
       });
       document.body.setAttribute('data-current-theme', theme);
     }
@@ -88,8 +87,9 @@
   type="button"
   class="theme-toggle"
   data-theme-toggle
-  aria-label="Activer le mode sombre (Lumière Basse)"
-  title="Changer de thème (Clair / Sombre doux / Contraste élevé)"
+  data-labels={labels}
+  aria-label={profile.theme.labels.dark}
+  title={profile.theme.title}
 >
   <!-- Sun (light) -->
   <svg class="ico-ico ico-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">

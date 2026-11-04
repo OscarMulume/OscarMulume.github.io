@@ -1,0 +1,22 @@
+---
+import profile from '../data/profile.json';
+
+const { about } = profile.sections;
+---
+
+<section id="apropos" class="section">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-label">{about.label}</div>
+      <h2 class="section-title">{about.title}</h2>
+      <p class="section-desc">{about.description}</p>
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-copy">
+        {about.paragraphs.map((paragraph) => (
+          <p set:html={paragraph} />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

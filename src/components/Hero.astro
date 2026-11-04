@@ -1,0 +1,37 @@
+---
+import PortraitFX from './PortraitFX.astro';
+import Icon from './Icon.astro';
+import profile from '../data/profile.json';
+
+const { hero } = profile;
+---
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        {hero.availability}
+      </div>
+      <h1>{hero.firstName} <span class="accent">{hero.lastName}</span></h1>
+      <div class="role">{hero.role}</div>
+      <p class="desc">{hero.description}</p>
+      <div class="btns">
+        <a href={hero.primaryCta.href} class="btn-p">
+          {hero.primaryCta.label}
+          <Icon name="arrow" width={16} height={16} />
+        </a>
+        <a href={hero.secondaryCta.href} class="btn-s">{hero.secondaryCta.label}</a>
+      </div>
+      <div class="loc-tag">{hero.location}</div>
+    </div>
+    <div class="hero-visual">
+      <PortraitFX portrait={hero.portrait} />
+    </div>
+  </div>
+  <div class="hero-stats">
+    {hero.stats.map((stat) => (
+      <div class="stat-card"><div class="stat-n">{stat.value}</div><div class="stat-l">{stat.label}</div></div>
+    ))}
+  </div>
+</section>

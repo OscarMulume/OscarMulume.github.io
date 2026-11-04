@@ -1,0 +1,27 @@
+---
+import profile from '../data/profile.json';
+
+const { footer } = profile.sections;
+const brand = profile.site.brand;
+---
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="logo">{brand.firstName}<span>{brand.lastName}</span></a>
+      <p>{footer.brandDescription}</p>
+    </div>
+    {footer.columns.map((column) => (
+      <div class="footer-col">
+        <h4>{column.title}</h4>
+        {column.links.map((link) => (
+          <a href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noopener noreferrer' : undefined}>{link.label}</a>
+        ))}
+      </div>
+    ))}
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="yr"></span> {profile.site.copyright}</span>
+    <span>{profile.site.location}</span>
+  </div>
+</footer>

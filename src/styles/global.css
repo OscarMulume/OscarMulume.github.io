@@ -391,6 +391,11 @@ body::after {
 .btn-p:hover::before { opacity: 1; }
 .btn-p:active { transform: translateY(0) scale(0.98); }
 
+.btn-full {
+  width: 100%;
+  justify-content: center;
+}
+
 .btn-s {
   display: inline-flex;
   align-items: center;
@@ -526,6 +531,10 @@ body::after {
 
 .section-header {
   margin-bottom: 64px;
+}
+
+.section-header-center {
+  text-align: center;
 }
 
 .section-label {

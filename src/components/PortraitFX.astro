@@ -1,7 +1,13 @@
 ---
-// Portrait interactif : photo recomposée en particules (souris = dispersion),
-// effet de profondeur 3D qui suit le pointeur. Repli sur une image simple
-// sur mobile, sans JavaScript ou avec « réduire les animations ».
+interface Props {
+  portrait: {
+    alt: string;
+    chips: { className: string; text: string; dot: boolean }[];
+    hint: string;
+  };
+}
+
+const { portrait } = Astro.props;
 ---
 
 <div class="pfx" id="pfx">
@@ -17,17 +23,20 @@
           src="/portrait.jpg"
           width="720"
           height="720"
-          alt="Portrait d'Oscar Mulume Izuba"
+          alt={portrait.alt}
           fetchpriority="high"
         />
       </picture>
       <canvas class="pfx-canvas" id="pfxCanvas" aria-hidden="true"></canvas>
     </div>
-    <div class="pfx-chip chip-a" aria-hidden="true"><span class="dot"></span>Cisco · Junior Cybersecurity Analyst</div>
-    <div class="pfx-chip chip-b" aria-hidden="true">SLA 99,9 %</div>
-    <div class="pfx-chip chip-c" aria-hidden="true">Hack The Box · Niv. 25</div>
+    {portrait.chips.map((chip) => (
+      <div class={`pfx-chip ${chip.className}`} aria-hidden="true">
+        {chip.dot && <span class="dot"></span>}
+        {chip.text}
+      </div>
+    ))}
   </div>
-  <p class="pfx-hint" id="pfxHint" aria-hidden="true">Passez la souris sur le portrait</p>
+  <p class="pfx-hint" id="pfxHint" aria-hidden="true">{portrait.hint}</p>
 </div>
 
 <style>
