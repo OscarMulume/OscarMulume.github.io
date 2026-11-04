@@ -24,12 +24,12 @@ Toute mission doit respecter ce contexte. En cas de doute : ne pas deviner, pose
 
 ## 3. Infrastructure (décidée)
 
-- Bases : Supabase organisation « M-SEC TECHNOLOGY CONSULTING » (offre gratuite = 2 projets actifs) :
+- Bases : Supabase organisation « M-SEC TECHNOLOGY CONSULTING » (offre gratuite Supabase = 2 projets actifs PAR PERSONNE, toutes organisations confondues ; projets actifs : malaika-ranch et pos-pro-msec ; pos-pro en pause) :
   `pos-pro` (Francfort, réservé au serveur Laravel de POS Pro, fermé à l'API publique) et
   `pos-pro-msec` (à renommer `msec-apps` : site M-SEC, Herbo, MonImmo, chacun dans son propre schéma).
   Bases supplémentaires si besoin : Neon (gratuit).
 - Hébergement : serveur POS Pro sur Render (gratuit, s'endort après 15 min) ; sites statiques sur GitHub Pages puis
-  Cloudflare Pages. **Pas de Vercel Hobby** pour un usage commercial (interdit par ses conditions).
+  Cloudflare Pages. Le site M-SEC et le portfolio sont sur GitHub Pages (déploiement par workflow). **Pas de Vercel Hobby** pour un usage commercial (interdit par ses conditions).
 - Jamais de domaine inventé : l'adresse d'API de POS Pro est https://pos-pro-msec.onrender.com tant qu'Oscar n'a pas
   acheté de domaine.
 
@@ -77,3 +77,4 @@ Toute mission doit respecter ce contexte. En cas de doute : ne pas deviner, pose
    pas les données : documenter dans chaque projet comment exporter la base (pg_dump ou export CSV).
 8. Les vérifications indépendantes sont faites par Claude ; signaler dans le rapport tout ce qui n'a pas pu être testé
    localement (ex. PostgreSQL, build Android).
+10. Encodage : UTF-8 SANS BOM ; jamais `Set-Content -Encoding utf8`.
