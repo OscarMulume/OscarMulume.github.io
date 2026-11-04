@@ -14,7 +14,21 @@ const { projects } = profile.sections;
     <div class="bento-grid">
       {projects.items.map((project, index) => {
         const className = `bento-card reveal reveal-delay-${Math.min(index + 1, 5)} proj-card`;
-        return project.href ? (
+        return project.links ? (
+          <div class={className}>
+            <div class="proj-head">
+              <div class="proj-tag">{project.tag}</div>
+              {project.status && <span class="proj-status">{project.status}</span>}
+            </div>
+            <h3>{project.title}</h3>
+            <p>{project.description}</p>
+            <div class="proj-links">
+              {project.links.map((link) => (
+                <a class="proj-link" href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a>
+              ))}
+            </div>
+          </div>
+        ) : project.href ? (
           <a class={className} href={project.href} target="_blank" rel="noopener noreferrer">
             <div class="proj-head">
               <div class="proj-tag">{project.tag}</div>

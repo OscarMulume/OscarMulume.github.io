@@ -249,6 +249,16 @@
           "linkLabel": "Voir le site →"
         },
         {
+          "tag": "Open source · IA locale",
+          "status": "En ligne",
+          "title": "Mosala",
+          "description": "Assistant open source de CV et de conversation pour les langues africaines, qui fonctionne hors ligne avec un modèle local (Ollama).",
+          "links": [
+            { "label": "Dépôt GitHub →", "href": "https://github.com/OscarMulume/nonchalant-cv" },
+            { "label": "Article sur DEV →", "href": "https://dev.to/oscarmulume/mosala-a-cv-and-conversation-assistant-for-africas-languages-running-on-your-own-computer-2coc" }
+          ]
+        },
+        {
           "tag": "Pentest · Hack The Box",
           "title": "Machines Cohort & Orion",
           "description": "Cohort : SSRF, accès initial puis élévation de privilèges via CVE. Orion : énumération web CraftCMS et contournement d'authentification Telnet local."
