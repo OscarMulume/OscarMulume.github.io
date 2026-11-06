@@ -78,3 +78,4 @@ Toute mission doit respecter ce contexte. En cas de doute : ne pas deviner, pose
 8. Les vérifications indépendantes sont faites par Claude ; signaler dans le rapport tout ce qui n'a pas pu être testé
    localement (ex. PostgreSQL, build Android).
 10. Encodage : UTF-8 SANS BOM ; jamais `Set-Content -Encoding utf8`.
+11. VÉRIFICATION AUTOMATIQUE (§6.11) : à la fin de chaque étape, AVANT le commit, appeler le sous-agent @verificateur (modèle différent du développeur) ; corriger ce qu'il signale ; citer son verdict dans le rapport. Un hook Git pre-push lance les tests du dépôt et bloque le push s'ils échouent (contournement `--no-verify` = à signaler dans le rapport) ; la CI GitHub reste le troisième filet.
