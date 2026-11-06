@@ -13,7 +13,7 @@ const DEFAULT_DESCRIPTION = profile.site.description;
 
 // L'assistant M-SEC (fichier unique hébergé sur le site M-SEC) n'est affiché que si la variable publique
 // est activée au build, après le déploiement de la fonction `assistant`.
-const ASSISTANT_SCRIPT = 'https://oscarmulume.github.io/msec-technology-consulting/assistant/msec-assistant.js';
+const ASSISTANT_SCRIPT = 'https://oscarmulume.github.io/msec-technology-consulting/assistant/v2/msec-assistant.js';
 const assistantEnabled = import.meta.env.PUBLIC_ASSISTANT_ENABLED === 'true';
 
 const {
@@ -111,7 +111,7 @@ const person = {
   <body data-current-theme="light">
     <a class="skip-link" href="#main">{profile.site.skipLink}</a>
     <slot />
-    {assistantEnabled && <msec-assistant lang="fr"></msec-assistant>}
+    {assistantEnabled && <msec-assistant app="portfolio" lang="fr"></msec-assistant>}
     {assistantEnabled && <script is:inline defer src={ASSISTANT_SCRIPT}></script>}
   </body>
 </html>

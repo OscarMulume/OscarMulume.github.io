@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 
-const SCRIPT_URL = 'https://oscarmulume.github.io/msec-technology-consulting/assistant/msec-assistant.js';
+const SCRIPT_URL = 'https://oscarmulume.github.io/msec-technology-consulting/assistant/v2/msec-assistant.js';
 
 test('build par défaut : l\'assistant n\'est pas affiché tant que le drapeau est absent', async () => {
   const html = await readFile('dist/index.html', 'utf8');
@@ -16,7 +16,7 @@ test('build avec le drapeau : composant français et fichier unique du site M-SE
   const html = await readFile('dist-assistant/index.html', 'utf8');
 
   assert.equal((html.match(/<msec-assistant\b/g) ?? []).length, 1);
-  assert.match(html, /<msec-assistant lang="fr"><\/msec-assistant>/);
+  assert.match(html, /<msec-assistant app="portfolio" lang="fr"><\/msec-assistant>/);
 
   const scripts = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]*msec-assistant[^"]*)"[^>]*>/g)];
   assert.equal(scripts.length, 1);
