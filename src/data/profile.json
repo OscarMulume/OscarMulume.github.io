@@ -259,6 +259,14 @@
           ]
         },
         {
+          "tag": "Open source · Outil IA",
+          "status": "En ligne",
+          "title": "opencode-free-router",
+          "description": "Routeur local qui permet à OpenCode et aux agents de code de continuer à travailler avec les quotas gratuits des fournisseurs de modèles : mesure, routage rapide et bascule automatique.",
+          "href": "https://github.com/OscarMulume/opencode-free-router",
+          "linkLabel": "Dépôt GitHub →"
+        },
+        {
           "tag": "Pentest · Hack The Box",
           "title": "Machines Cohort & Orion",
           "description": "Cohort : SSRF, accès initial puis élévation de privilèges via CVE. Orion : énumération web CraftCMS et contournement d'authentification Telnet local."
