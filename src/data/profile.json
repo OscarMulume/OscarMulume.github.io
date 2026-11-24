@@ -62,7 +62,7 @@
     "stats": [
       { "value": "2021", "label": "En IT depuis" },
       { "value": "5", "label": "Entités sécurisées chez Malaïka" },
-      { "value": "5", "label": "Badges Cisco vérifiés" },
+      { "value": "20", "label": "Certifs & badges vérifiables" },
       { "value": "99,9 %", "label": "SLA maintenu" }
     ],
     "portrait": {
@@ -311,14 +311,17 @@
     },
     "credentials": {
       "label": "Preuves vérifiables",
-      "title": "Badges Cisco Networking Academy vérifiés",
-      "description": "Cinq badges délivrés par Cisco Networking Academy, vérifiables sur Credly. Ce sont des badges de formation, et non des certifications professionnelles.",
+      "title": "Certifications, badges & formations",
+      "description": "Mon portefeuille de preuves vérifiables : badges Cisco (Credly), parcours Internet Society (pages publiques Accredible) et attestations de formation. Ce sont des badges et certificats de formation vérifiables en ligne — et non des certifications professionnelles homologuées (type CISSP ou CCNA).",
       "issuer": "Cisco Networking Academy",
       "issuedLabel": "Délivré le",
       "verifyLabel": "Vérifier sur Credly",
-      "profileLabel": "Voir les 5 badges sur Credly",
-      "profileUrl": "https://www.credly.com/users/oscar-mulume",
-      "othersLabel": "Autres badges Cisco",
+      "stats": [
+        { "value": "20", "label": "Vérifiables en ligne" },
+        { "value": "15", "label": "Parcours Internet Society" },
+        { "value": "5", "label": "Badges Cisco" }
+      ],
+      "featuredLabel": "Badges mis en avant",
       "items": [
         {
           "name": "Ethical Hacker",
@@ -339,10 +342,60 @@
           "skills": ["Surveillance réseau et alertes", "Pare-feu, sécurité cloud et cryptographie", "Évaluation des vulnérabilités et réponse à incident"]
         }
       ],
-      "others": [
-        { "name": "Networking Devices and Initial Configuration", "date": "17 mars 2026", "dateTime": "2026-03-17", "url": "https://www.credly.com/users/oscar-mulume" },
-        { "name": "Networking Basics", "date": "4 mars 2026", "dateTime": "2026-03-04", "url": "https://www.credly.com/users/oscar-mulume" },
-        { "name": "Introduction to Cybersecurity", "date": "10 juillet 2022", "dateTime": "2022-07-10", "url": "https://www.credly.com/users/oscar-mulume" }
+      "verifyShort": "Vérifier",
+      "collections": [
+        {
+          "title": "Cisco Networking Academy",
+          "note": "Badges délivrés par Cisco Networking Academy, vérifiables sur Credly.",
+          "profileLabel": "Voir mon profil Credly",
+          "profileUrl": "https://www.credly.com/users/oscar-mulume",
+          "items": [
+            { "name": "Ethical Hacker", "date": "23 oct. 2026", "dateTime": "2026-10-23", "url": "https://www.credly.com/badges/bc73a9b9-0b18-423f-b230-485a61ddfcc6/public_url" },
+            { "name": "Junior Cybersecurity Analyst Career Path", "date": "20 mars 2026", "dateTime": "2026-03-20", "url": "https://www.credly.com/badges/28ac05ee-4d11-4114-9c58-15cbf86c4589/public_url" },
+            { "name": "Networking Devices and Initial Configuration", "date": "17 mars 2026", "dateTime": "2026-03-17", "url": "https://www.credly.com/users/oscar-mulume" },
+            { "name": "Networking Basics", "date": "4 mars 2026", "dateTime": "2026-03-04", "url": "https://www.credly.com/users/oscar-mulume" },
+            { "name": "Introduction to Cybersecurity", "date": "10 juil. 2022", "dateTime": "2022-07-10", "url": "https://www.credly.com/users/oscar-mulume" }
+          ]
+        },
+        {
+          "title": "Internet Society — Certificats",
+          "note": "Parcours de formation Internet Society. Chaque lien ouvre la page publique Accredible du certificat.",
+          "items": [
+            { "name": "Internet Governance", "url": "https://certificates.isoc.org/8ec5aa57-55eb-4b35-88b3-63ba6c820f8b" },
+            { "name": "Internet Safety & Security — Systems Security Subtrack", "url": "https://certificates.isoc.org/37621d80-b8c5-46c2-bfbb-103fe790ec7b" },
+            { "name": "Internet Safety & Security — Online Trust & Safety Subtrack", "url": "https://certificates.isoc.org/49bb217e-7092-4e5e-b286-d53d7fdd6c39" },
+            { "name": "Internet Connectivity — Community-Centered Connectivity Subtrack", "url": "https://certificates.isoc.org/b8f1fd92-f414-42e4-a0b4-ff3faabc93d9" },
+            { "name": "Introduction to Online Trust and Safety", "url": "https://certificates.isoc.org/740d60b4-1c5c-4599-b994-82d0739e28b9" },
+            { "name": "Introduction à la confiance et à la sécurité en ligne", "url": "https://certificates.isoc.org/f19c7ea8-b9ba-4fbb-ab4e-505e9d99e6f1" },
+            { "name": "What the Internet Needs to Exist", "url": "https://certificates.isoc.org/f5dd9b2b-714c-4588-a7fa-3cacb869664f" },
+            { "name": "What the Internet Needs to Thrive", "url": "https://certificates.isoc.org/53e6ed11-065d-4cb4-86bd-d1b285e6ea72" },
+            { "name": "Community Networks Readiness Assessment", "url": "https://certificates.isoc.org/15b6a2a4-5278-4712-97ca-171de8504cfa" },
+            { "name": "Grant Ready — Building Your Grant Application", "url": "https://certificates.isoc.org/48208211-da21-497e-aabe-0484173e6e33" }
+          ]
+        },
+        {
+          "title": "Internet Society — Badges (Internet Way of Networking)",
+          "note": "Badges Internet Way of Networking, pages publiques Accredible.",
+          "items": [
+            { "name": "Overview & Foundations of the Internet Way of Networking", "url": "https://certificates.isoc.org/6401efc9-2e0a-4f32-bfb1-26bc954b72dc" },
+            { "name": "Critical Property 1 & 2", "url": "https://certificates.isoc.org/fa4552c5-284c-4312-9f74-8d8286e764b4" },
+            { "name": "Critical Property 3 & 4", "url": "https://certificates.isoc.org/e7f27985-8632-49de-b1ff-91cf8bdaf30f" },
+            { "name": "Critical Property 5", "url": "https://certificates.isoc.org/2b911e68-fbf3-4af3-abac-c003dcd20021" },
+            { "name": "Enablers of an Open, Globally Connected, Secure & Trustworthy Internet", "url": "https://certificates.isoc.org/67386e66-a6d1-4ba5-9e8a-ab467db5775d" }
+          ]
+        },
+        {
+          "title": "Formations professionnelles & terrain",
+          "note": "Attestations délivrées par les organismes ci-dessous (justificatifs PDF disponibles sur demande).",
+          "items": [
+            { "name": "Liquid Intelligent Technologies — Data Sovereignty & Local Hosting", "date": "15 mai 2026", "dateTime": "2026-05-15" },
+            { "name": "Liquid Intelligent Technologies — Maîtriser les risques et la confiance dans l'IA moderne", "date": "26 juin 2026", "dateTime": "2026-06-26" },
+            { "name": "Liquid Intelligent Technologies — Compute AI, SME Growth, Security & AI Basic Components", "date": "28 août 2026", "dateTime": "2026-08-28" },
+            { "name": "UNHCR RETS — VHF/UHF Repeaters & ICOM IP2AIR (Security Communications Systems)", "date": "26 févr. 2026", "dateTime": "2026-02-26" },
+            { "name": "CTF « AAR Cyber » — Octobre Cyber 2026 (Nu Jang Informatique)", "date": "oct. 2026", "dateTime": "2026-10-01" },
+            { "name": "DisasterReady — 2 formations terminées (gestion de données & sécurité en situation d'urgence)", "date": "2026", "dateTime": "2026-01-01" }
+          ]
+        }
       ]
     },
     "cv": {
@@ -484,7 +537,7 @@
             { "label": "À propos", "href": "#apropos" },
             { "label": "Expériences", "href": "#experiences" },
             { "label": "Compétences", "href": "#competences" },
-            { "label": "Badges Cisco", "href": "#badges" },
+            { "label": "Certifications", "href": "#badges" },
             { "label": "CV", "href": "#cv" },
             { "label": "M-SEC Technology Consulting", "href": "https://oscarmulume.github.io/msec-technology-consulting/", "external": true }
           ]
