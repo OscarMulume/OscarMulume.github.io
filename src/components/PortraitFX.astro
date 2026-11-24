@@ -31,7 +31,7 @@ const { portrait } = Astro.props;
           fetchpriority="high"
         />
       </picture>
-      <canvas class="pfx-canvas" id="pfxCanvas" aria-hidden="true"></canvas>
+      <div class="pfx-sheen" aria-hidden="true"></div>
     </div>
     {portrait.chips.map((chip) => (
       <div class={`pfx-chip ${chip.className}`} aria-hidden="true">
@@ -49,14 +49,14 @@ const { portrait } = Astro.props;
     position: relative;
     width: var(--size);
     margin: 0 auto;
-    perspective: 1000px;
+    perspective: 1100px;
   }
   .pfx-tilt {
     position: relative;
     width: var(--size);
     height: var(--size);
     transform-style: preserve-3d;
-    transition: transform 0.25s ease-out;
+    transition: transform 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
     will-change: transform;
   }
   .pfx-frame {
@@ -64,12 +64,11 @@ const { portrait } = Astro.props;
     inset: 8%;
     border-radius: 50%;
     overflow: hidden;
-    transform: translateZ(40px);
-    box-shadow: 0 30px 60px -20px rgba(15, 23, 42, 0.45);
+    transform: translateZ(44px);
+    box-shadow: 0 34px 70px -24px rgba(15, 23, 42, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.14);
     background: var(--bg2, #e5e7eb);
   }
-  .pfx-img,
-  .pfx-canvas {
+  .pfx-img {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -77,13 +76,22 @@ const { portrait } = Astro.props;
     display: block;
     object-fit: cover;
   }
-  .pfx-img { transition: opacity 0.35s ease; }
-  .pfx-canvas { opacity: 0; transition: opacity 0.35s ease; }
-  .pfx.fx-on .pfx-canvas { opacity: 1; }
-  .pfx.fx-on .pfx-img { opacity: 0; }
-  /* Au repos : la vraie photo, nette ; les particules reprennent au survol. */
-  .pfx.fx-on.settled .pfx-canvas { opacity: 0; }
-  .pfx.fx-on.settled .pfx-img { opacity: 1; }
+  /* Reflet lumineux qui suit le curseur (uniquement au survol, ordinateur). */
+  .pfx-sheen {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    mix-blend-mode: screen;
+    background: radial-gradient(
+      240px 240px at var(--mx, 50%) var(--my, 30%),
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0) 60%
+    );
+  }
+  .pfx.is-hover .pfx-sheen { opacity: 1; }
   .pfx-glow {
     position: absolute;
     inset: 4%;
@@ -131,7 +139,7 @@ const { portrait } = Astro.props;
     opacity: 0;
     transition: opacity 0.4s;
   }
-  .pfx.fx-on .pfx-hint { opacity: 1; }
+  .pfx.is-hover .pfx-hint { opacity: 1; }
   @keyframes pfx-spin { to { transform: translateZ(10px) rotate(360deg); } }
   @media (max-width: 640px) {
     .chip-a { left: -2%; }
@@ -148,139 +156,38 @@ const { portrait } = Astro.props;
   (() => {
     const root = document.getElementById('pfx');
     const tilt = document.getElementById('pfxTilt') as HTMLElement | null;
-    const canvas = document.getElementById('pfxCanvas') as HTMLCanvasElement | null;
-    if (!root || !tilt || !canvas) return;
+    if (!root || !tilt) return;
 
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-    // ── Effet 3D : le portrait suit le pointeur ──
-    if (!reduce && finePointer) {
-      const area = root.closest('.hero') || root;
-      area.addEventListener('mousemove', (e) => {
-        const ev = e as MouseEvent;
-        const r = root.getBoundingClientRect();
-        const x = (ev.clientX - (r.left + r.width / 2)) / r.width;
-        const y = (ev.clientY - (r.top + r.height / 2)) / r.height;
-        tilt.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 14}deg)`;
-      });
-      area.addEventListener('mouseleave', () => { tilt.style.transform = ''; });
-    }
+    // Effet « Élégant 3D » : la photo (nette) s'incline vers le pointeur,
+    // avec un reflet lumineux qui suit le curseur. Aucune pixellisation.
+    const frame = root.querySelector('.pfx-frame') as HTMLElement | null;
+    const area = (root.closest('.hero') as HTMLElement | null) || root;
 
-    // ── Particules : seulement sur ordinateur, animations autorisées ──
-    if (reduce || !finePointer) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    const img = new Image();
-    img.src = '/portrait.jpg';
-
-    type Pt = { x: number; y: number; hx: number; hy: number; vx: number; vy: number; c: string };
-    let pts: Pt[] = [];
-    let W = 0, H = 0, dpr = 1, cell = 3;
-    let mx = -9999, my = -9999;
-    let running = false, visible = true, rafId = 0;
-
-    function build() {
-      const rect = canvas!.getBoundingClientRect();
-      if (!rect.width) return;
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      W = Math.round(rect.width); H = Math.round(rect.height);
-      canvas!.width = W * dpr; canvas!.height = H * dpr;
-      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      cell = W > 300 ? 3 : 4;
-      const cols = Math.floor(W / cell), rows = Math.floor(H / cell);
-      const off = document.createElement('canvas');
-      off.width = cols; off.height = rows;
-      const octx = off.getContext('2d', { willReadFrequently: true });
-      if (!octx) return;
-      octx.drawImage(img, 0, 0, cols, rows);
-      const data = octx.getImageData(0, 0, cols, rows).data;
-
-      const prev = pts;
-      pts = [];
-      for (let j = 0; j < rows; j++) {
-        for (let i = 0; i < cols; i++) {
-          const k = (j * cols + i) * 4;
-          const hx = i * cell, hy = j * cell;
-          const p = prev[pts.length];
-          pts.push({
-            hx, hy,
-            x: p ? p.x : Math.random() * W,
-            y: p ? p.y : Math.random() * H,
-            vx: 0, vy: 0,
-            c: `rgb(${data[k]},${data[k + 1]},${data[k + 2]})`,
-          });
-        }
+    const apply = (clientX: number, clientY: number) => {
+      const r = root.getBoundingClientRect();
+      const px = (clientX - r.left) / r.width;
+      const py = (clientY - r.top) / r.height;
+      root.classList.add('is-hover');
+      if (!reduce) tilt.style.transform = `rotateY(${(px - 0.5) * 16}deg) rotateX(${-(py - 0.5) * 16}deg)`;
+      if (frame) {
+        frame.style.setProperty('--mx', Math.max(0, Math.min(100, px * 100)) + '%');
+        frame.style.setProperty('--my', Math.max(0, Math.min(100, py * 100)) + '%');
       }
-    }
-
-    const R = 60;           // rayon d'influence de la souris (px)
-    const FORCE = 2.4;      // puissance de dispersion
-    const SPRING = 0.06;    // retour vers la position d'origine
-    const FRICTION = 0.82;
-
-    function frame() {
-      if (!running) return;
-      ctx!.fillStyle = '#0b1020';
-      ctx!.fillRect(0, 0, W, H);
-      let moving = false;
-      for (const p of pts) {
-        const dx = p.x - mx, dy = p.y - my;
-        const d2 = dx * dx + dy * dy;
-        if (d2 < R * R) {
-          const d = Math.sqrt(d2) || 1;
-          const f = (1 - d / R) * FORCE;
-          p.vx += (dx / d) * f * 4;
-          p.vy += (dy / d) * f * 4;
-        }
-        p.vx = (p.vx + (p.hx - p.x) * SPRING) * FRICTION;
-        p.vy = (p.vy + (p.hy - p.y) * SPRING) * FRICTION;
-        p.x += p.vx; p.y += p.vy;
-        if (!moving && (Math.abs(p.vx) > 0.05 || Math.abs(p.vy) > 0.05)) moving = true;
-        ctx!.fillStyle = p.c;
-        ctx!.fillRect(Math.round(p.x), Math.round(p.y), cell + 1, cell + 1);
-      }
-      // Économie : on s'arrête quand tout est au repos et la souris absente.
-      if (!moving && mx < -1000) {
-        for (const p of pts) { p.x = p.hx; p.y = p.hy; p.vx = 0; p.vy = 0; }
-        running = false;
-        root!.classList.add('settled');
-        return;
-      }
-      rafId = requestAnimationFrame(frame);
-    }
-
-    function wake() {
-      if (running || !visible) return;
-      running = true;
-      root!.classList.remove('settled');
-      rafId = requestAnimationFrame(frame);
-    }
-
-    canvas.addEventListener('mousemove', (e) => {
-      const r = canvas.getBoundingClientRect();
-      mx = e.clientX - r.left; my = e.clientY - r.top;
-      wake();
-    });
-    canvas.addEventListener('mouseleave', () => { mx = -9999; my = -9999; wake(); });
-
-    new IntersectionObserver((entries) => {
-      visible = entries[0].isIntersecting;
-      if (visible) wake(); else { running = false; cancelAnimationFrame(rafId); }
-    }).observe(root);
-
-    let resizeT = 0;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeT);
-      resizeT = window.setTimeout(() => { build(); wake(); }, 150);
-    });
-
-    img.onload = () => {
-      build();
-      root.classList.add('fx-on');
-      wake(); // assemblage initial : les particules rejoignent le portrait
     };
+    const reset = () => { root.classList.remove('is-hover'); tilt.style.transform = ''; };
+
+    if (finePointer) {
+      area.addEventListener('mousemove', (e) => apply((e as MouseEvent).clientX, (e as MouseEvent).clientY));
+      area.addEventListener('mouseleave', reset);
+    }
+    // Tactile : léger reflet/inclinaison en suivant le doigt sur la photo.
+    root.addEventListener('touchmove', (e) => {
+      const t = (e as TouchEvent).touches[0];
+      if (t) apply(t.clientX, t.clientY);
+    }, { passive: true });
+    root.addEventListener('touchend', reset);
   })();
 </script>
