@@ -22,18 +22,23 @@ const {
 } = Astro.props;
 
 const credentials = profile.sections.credentials;
-const credentialItems = [...credentials.items, ...credentials.others].map((credential) => ({
-  '@type': 'EducationalOccupationalCredential',
-  name: credential.name,
-  dateCreated: credential.dateTime,
-  url: credential.url,
-  credentialCategory: 'Badge',
-  recognizedBy: {
-    '@type': 'EducationalOrganization',
-    name: credentials.issuer,
-    url: 'https://www.netacad.com/',
-  },
-}));
+type CredItem = { name: string; date?: string; dateTime?: string; url?: string };
+type CredGroup = { title: string; note?: string; profileLabel?: string; profileUrl?: string; items: CredItem[] };
+const credCollections = credentials.collections as CredGroup[];
+const credentialItems = credCollections.flatMap((group) =>
+  group.items.map((credential) => ({
+    '@type': 'EducationalOccupationalCredential',
+    name: credential.name,
+    dateCreated: credential.dateTime,
+    url: credential.url,
+    credentialCategory: 'Certificate',
+    recognizedBy: {
+      '@type': 'EducationalOrganization',
+      name: group.title,
+    },
+  }))
+);
+const credlyProfile = credCollections.find((group) => group.profileUrl)?.profileUrl;
 
 const socialLinks = (profile.sections.contact.cards as { href?: string; external?: boolean }[])
   .filter((card) => card.external && card.href)
@@ -52,7 +57,7 @@ const person = {
     addressLocality: 'Kinshasa',
     addressCountry: 'CD',
   },
-  sameAs: [...socialLinks, credentials.profileUrl],
+  sameAs: [...socialLinks, ...(credlyProfile ? [credlyProfile] : [])],
   worksFor: {
     '@type': 'Organization',
     name: profile.site.company.name,
